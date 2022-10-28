@@ -1,0 +1,21 @@
+// Кольори
+$bgColor: #fcfcfc;
+$accentColor: #fd5103;
+$buttonColor: #fe7031;
+$textColorBlack: #202025;
+$textColorGray: #5f6775;
+$textColorWhite: #ffffff;
+$texttColorBlackModal: #000917;
+$shadowColor: radial-gradient(
+  50% 50% at 50% 50%,
+  #2f583f 0%,
+  rgba(105, 105, 105, 0) 100%
+);
+
+// Шрифти
+$ffPoppins: 'Poppins';
+$ffRoboto: 'Roboto';
+$ffMont: 'Montserrat';
+
+// Кубік
+$timingFunction: cubic-bezier(0.4, 0, 0.2, 1);
