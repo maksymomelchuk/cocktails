@@ -22,4 +22,38 @@
   }
 }
 
+.alert-message {
+  display: flex;
+  align-items: flex-start;
+  margin-left: auto;
+  margin-right: auto;
+  // margin-bottom: 232px;
+
+  width: 239px;
+  height: 120px;
+
+  color: $textColorBlack;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 3;
+
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    width: 296px;
+    height: 120px;
+
+    font-size: 24px;
+    line-height: 2.5;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 385px;
+    height: 144px;
+
+    font-size: 32px;
+    line-height: 2.25;
+  }
+}
+
 //додати стилі із секції коктейлі
