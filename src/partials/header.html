@@ -1,7 +1,7 @@
 <header class="header">
   <div class="header-container container">
     <nav class="header-navigation">
-      <a href="" class="header-navigation__link">
+      <a href="./index.html" class="header-navigation__link">
         <img src="./images/logo.png" alt="" />
       </a>
       <ul class="header-list">
@@ -11,18 +11,27 @@
         </li>
       </ul>
     </nav>
-    <div class="search">
-      <button type="button" class="btn-search">
-        <svg width="24" height="24">
-          <use href="./images/search.svg#icon-bx_search"></use>
+    <div class="position-search">
+      <div class="search">
+        <button type="button" class="btn-search">
+          <svg width="24" height="24">
+            <use href="./images/search.svg#icon-bx_search"></use>
+          </svg>
+        </button>
+        <input class="input-search" type="text" placeholder="Search" />
+      </div>
+      <button class="menu-open" type="button">
+        <svg class="menu-icon" width="30" height="16">
+          <use href="./images/symbol-defs.svg#icon-menu"></use>
         </svg>
       </button>
-      <input class="input-search" type="text" placeholder="Search" />
     </div>
-    <button class="menu-open" type="button">
-      <svg class="menu-icon" width="30" height="16">
-        <use href="./images/symbol-defs.svg#icon-menu"></use>
+    <button class="toogle" type="button">
+      Light
+      <svg width="30" height="16">
+        <use href="./images/toggle.svg#icon-Toggle"></use>
       </svg>
+      <span class="toogle-dark">Dark</span>
     </button>
   </div>
 </header>

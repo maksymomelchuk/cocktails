@@ -3,42 +3,69 @@ p {
 }
 .header-container {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   padding-top: 20px;
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
+  }
+
   @media screen and (min-width: 1280px) {
-    align-items: flex-end;
+    justify-content: space-between;
   }
 }
 .menu-open {
   background-color: #fff;
   border: none;
-
   display: block;
-}
-.header-list {
-  visibility: hidden;
   @media screen and (min-width: 1280px) {
-    visibility: visible;
-    display: flex;
-    margin-top: 39px;
-    margin-left: 43px;
-    gap: 60px;  
+    display: none;
   }
+}
+
+.header-list {
+  display: none;
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    gap: 60px;
+    margin-right: 251px;
+  }
+}
+
+.header-list__link {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: 0.02em;
+  color: #202025;
 }
 .header-navigation {
   display: flex;
   align-items: flex-end;
 }
-
-.search {
-  visibility: hidden;
+.header-navigation__link {
   @media screen and (min-width: 768px) {
-    visibility: visible;
-    margin-left: auto;
+    margin-right: 190px;
+    width: 156px;
+    height: 43px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 43px;
+  }
+}
+.position-search {
+  display: flex;
+  justify-content: flex-end;
+}
+.search {
+  display: none;
+  @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 40px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 172px;
   }
 }
 
@@ -52,8 +79,44 @@ p {
 .input-search {
   height: 40px;
   border: 1px solid #fd5103;
+  width: 248px;
 }
 
 .input-search:placeholder-shown {
   padding-left: 8px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.71;
+  letter-spacing: 0.02em;
+  color: #5f6775;
+  opacity: 0.4;
+}
+
+.toogle {
+  display: none;
+  @media screen and (min-width: 1280px) {
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #ffffff;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    color: #fd5103;
+    border: none;
+  }
+}
+.toogle-dark {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  display: flex;
+  align-items: center;
+  color: #5f6775;
 }
