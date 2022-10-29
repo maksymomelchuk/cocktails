@@ -41,9 +41,13 @@
 }
 
 .coctails__item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   overflow: hidden;
   width: 280px;
-  height: 449px;
+  min-height: 449px;
   border: 1px solid $accentColor;
   border-radius: 4px;
   margin-left: auto;
@@ -51,12 +55,12 @@
 
   @media screen and (min-width: 768px) {
     width: 335px;
-    height: 541px;
+    min-height: 541px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 395px;
-    height: 556px;
+    min-height: 556px;
   }
 }
 
@@ -87,6 +91,8 @@
 }
 
 .coctails__name {
+  flex-grow: 1;
+
   text-align: center;
   font-weight: 900;
   font-size: 26px;
