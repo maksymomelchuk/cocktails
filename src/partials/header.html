@@ -2,12 +2,23 @@
   <div class="header-container container">
     <nav class="header-navigation">
       <a href="./index.html" class="header-navigation__link">
-        <img src="./images/logo.png" alt="" />
+        <img src="./images/logo.png" alt="logo" />
       </a>
       <ul class="header-list">
-        <li class="header-list__item"><a class="header-list__link">Home</a></li>
         <li class="header-list__item">
-          <a class="header-list__link">Favorite</a>
+          <a href="" class="header-list__link">Home</a>
+        </li>
+        <li class="header-list__item">
+          <a href="" class="header-list__link">Favorite</a>
+          <!-- Выпадающий список -->
+          <ul class="header-list-menu">
+            <li class="header-list-menu__item">
+              <a class="header-list-menu__link" href="">Favorite cocktails</a>
+            </li>
+            <li class="header-list-menu__item">
+              <a class="header-list-menu__link" href="">Favorite ingredients</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
@@ -18,7 +29,15 @@
             <use href="./images/search.svg#icon-bx_search"></use>
           </svg>
         </button>
-        <input class="input-search" type="text" placeholder="Search" />
+        <input
+          class="input-search"
+          type="text"
+          name="username"
+          id="user_text"
+          placeholder="Search"
+          required
+          autofocus
+        />
       </div>
       <button class="menu-open" type="button">
         <svg class="menu-icon" width="30" height="16">

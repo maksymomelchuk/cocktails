@@ -14,7 +14,7 @@ p {
   }
 }
 .menu-open {
-  background-color: #fff;
+  background-color: $textColorWhite;
   border: none;
   display: block;
   @media screen and (min-width: 1280px) {
@@ -32,19 +32,23 @@ p {
 }
 
 .header-list__link {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
+  font-family: $ffPoppins;
   font-size: 18px;
   line-height: 1.33;
   letter-spacing: 0.02em;
-  color: #202025;
+  color: $textColorBlack;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: $accentColor;
+  }
 }
 .header-navigation {
   display: flex;
   align-items: flex-end;
 }
 .header-navigation__link {
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   @media screen and (min-width: 768px) {
     margin-right: 190px;
     width: 156px;
@@ -70,22 +74,43 @@ p {
 }
 
 .btn-search {
+  cursor: pointer;
+  outline: none;
   height: 40px;
   width: 40px;
   display: block;
-  background-color: #fff;
-  border: 1px solid #fd5103;
+  background-color: $textColorWhite;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: $accentColor;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: $accentColor;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $accentColor;
+  border-right-width: none;
+  border-right-style: none;
+  border-right-color: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 .input-search {
+  outline: none;
   height: 40px;
-  border: 1px solid #fd5103;
+  border: 1px solid $accentColor;
   width: 248px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  &:focus {
+    fill: $accentColor;
+  }
 }
 
 .input-search:placeholder-shown {
   padding-left: 8px;
-  font-family: 'Poppins';
-  font-style: normal;
+  font-family: $ffPoppins;
   font-weight: 400;
   line-height: 1.71;
   letter-spacing: 0.02em;
@@ -96,27 +121,64 @@ p {
 .toogle {
   display: none;
   @media screen and (min-width: 1280px) {
-    visibility: visible;
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 12px;
-    background-color: #ffffff;
-    font-family: 'Poppins';
-    font-style: normal;
+    background-color: $textColorWhite;
+    font-family: $ffPoppins;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.33;
-    color: #fd5103;
+    color: $accentColor;
     border: none;
   }
 }
 .toogle-dark {
-  font-family: 'Poppins';
-  font-style: normal;
+  font-family: $ffPoppins;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.33;
   display: flex;
   align-items: center;
-  color: #5f6775;
+  color: $textColorGray;
+}
+
+////////////////////////////////
+.header-list-menu__link {
+  @media screen and (min-width: 1280px) {
+    text-decoration: none;
+    font-family: $ffPoppins;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: 0.02em;
+    padding: 12px;
+    color: #000000;
+    border-radius: 4px;
+    display: block;
+    &:hover,
+    &:focus {
+      color: $textColorWhite;
+      background-color: $accentColor;
+    }
+  }
+}
+
+.header-list-menu {
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    width: 212px;
+    height: 98px;
+    border: 1px solid $accentColor;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 8px;
+    border-radius: 4px;
+  }
+}
+
+.header-list-menu__item {
+  width: 100%;
 }
