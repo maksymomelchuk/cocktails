@@ -1,3 +1,59 @@
 p {
   font-family: $ffRoboto;
 }
+.header-container {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  @media screen and (min-width: 1280px) {
+    align-items: flex-end;
+  }
+}
+.menu-open {
+  background-color: #fff;
+  border: none;
+
+  display: block;
+}
+.header-list {
+  visibility: hidden;
+  @media screen and (min-width: 1280px) {
+    visibility: visible;
+    display: flex;
+    margin-top: 39px;
+    margin-left: 43px;
+    gap: 60px;  
+  }
+}
+.header-navigation {
+  display: flex;
+  align-items: flex-end;
+}
+
+.search {
+  visibility: hidden;
+  @media screen and (min-width: 768px) {
+    visibility: visible;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+  }
+}
+
+.btn-search {
+  height: 40px;
+  width: 40px;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #fd5103;
+}
+.input-search {
+  height: 40px;
+  border: 1px solid #fd5103;
+}
+
+.input-search:placeholder-shown {
+  padding-left: 8px;
+}
