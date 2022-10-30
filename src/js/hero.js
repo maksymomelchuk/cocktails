@@ -1,4 +1,5 @@
 import { Select } from './select/select';
+import { fetchByLetter } from './fetch';
 const select = new Select('#select', {
   selectedId: 'A',
 });
@@ -12,6 +13,7 @@ input.addEventListener('click', onInputClick);
 function onInputClick(event) {
   if (event.path[0].classList.contains('select__item')) {
     console.log(select.selectedId);
+    fetchByLetter(select.selectedId);
   }
 }
 

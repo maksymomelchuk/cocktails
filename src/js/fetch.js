@@ -91,3 +91,5 @@ function createMarkup(array) {
     .join('');
   cocktailList.innerHTML = markup;
 }
+
+export { fetchByLetter };
