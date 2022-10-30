@@ -31,12 +31,10 @@
 
 .coctails__list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 20px;
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
     gap: 31px;
   }
 }
@@ -46,9 +44,8 @@
   flex-direction: column;
 
   width: 280px;
-  min-height: 449px;
-  height: 100%;
-
+  border: 1px solid $accentColor;
+  border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
 
@@ -87,6 +84,9 @@
 }
 
 .coctails-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 0px 21px 24px 21px;
 
   @media screen and (min-width: 768px) {
@@ -99,8 +99,7 @@
 }
 
 .coctails__name {
-  flex-grow: 1;
-
+  flex: 1;
   margin-bottom: 16px;
 
   text-align: center;
