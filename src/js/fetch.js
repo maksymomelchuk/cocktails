@@ -1,9 +1,9 @@
-const searchBar = document.querySelector('.search-form');
+const searchBar = document.querySelector('.search');
 const cocktailList = document.querySelector('.coctails__list');
 
 searchBar.addEventListener('submit', onSubmit);
 
-// fetchRandom();
+fetchRandom();
 
 function onSubmit() {
   event.preventDefault();
