@@ -1,5 +1,22 @@
 .hero {
   padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    padding-top: 77px;
+    padding-bottom: 60px;
+    // flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0;
+    grid-row-gap: 0px;
+    grid-auto-rows: minmax(auto auto);
+    align-items: flex-start;
+  }
 }
 
 .hero__title {
@@ -9,11 +26,45 @@
   color: $accentColor;
   width: 300px;
   margin-bottom: 60px;
+  @media screen and (min-width: 768px) {
+    font-size: 26px;
+    line-height: 1.6;
+    width: 336px;
+    margin-right: 32px;
+    margin-top: 23px;
+    margin-bottom: 40;
+    grid-area: 1 / 1 / 2 / 2;
+  }
+}
+.hero__picture {
+  width: 280px;
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    height: 294px;
+    // grid-area: 1 / 2 / 4 / 3;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+}
+
+.text__container {
+  @media screen and (min-width: 768px) {
+    width: 324px;
+
+    grid-area: 2 / 1 / 3 / 2;
+    align-self: start;
+  }
 }
 
 .hero__filter__text {
   margin-top: 60px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   font-weight: 500;
   font-size: 14px;
   text-align: center;
@@ -21,12 +72,20 @@
   letter-spacing: 0.02em;
   color: #000000;
   opacity: 0.8;
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-align-last: left;
+  }
 }
 .select__wrap {
   text-align: center;
   margin: 0 auto;
   width: 93px;
   height: 34px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 }
 
 .select {
@@ -93,7 +152,7 @@
 // }
 
 .select__input:focus,
-.select__input:hover {
+.select__input:active {
   background-color: $accentColor;
   color: #fff;
   fill: #fff;
@@ -101,9 +160,12 @@
   border-radius: 4px;
 }
 .select__input:focus .arrow-down,
-.select:hover .arrow-down {
+.select:active .arrow-down {
   fill: #fff;
 }
+// .select:active .arrow-down {
+//   fill: $accentColor;
+// }
 .select__dropdown {
   display: none;
   position: absolute;
@@ -149,6 +211,50 @@
 //   background-color: #5f6775;
 // }
 
+.select_list {
+}
+.fillter {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+}
+.fillter__list {
+  width: 324px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+
+.fillter_button {
+  cursor: pointer;
+
+  width: 24px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  color: #5f6775;
+
+  &:hover,
+  &:focus {
+    color: #fd5103;
+    text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
+    border: 1px solid #5f6775;
+  }
+}
+
+.fillter_button--current {
+  color: #fd5103;
+  text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
+  border: 1px solid #5f6775;
+}
 .select__item {
   padding: 6.5px 10px;
   text-align: left;
