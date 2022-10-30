@@ -6,6 +6,6 @@ const refs = {
 refs.openFavorite.addEventListener('click', openFavoriteMenu);
 
 function openFavoriteMenu(e) {
-  //   e.preventDefault();
-  //   refs.menuFavorite.classList.toggle('visually-hidden');
+  e.preventDefault();
+  refs.menuFavorite.classList.toggle('visually-hidden');
 }
