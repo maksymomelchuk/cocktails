@@ -1,18 +1,34 @@
 .coctails-modal {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 320px;
   height: 100%;
   min-height: 956px;
 
   padding: 40px 20px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 822px;
+    min-height: 598px;
+
+    padding: 40px 28px;
+  }
 }
 
 .modal__icon {
   display: block;
-  // position: absolute;
-  // top: 16px;
-  // right: 16px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
   fill: $textColorBlack;
+
+  @media screen and (min-width: 768px) {
+    top: 12px;
+    right: 12px;
+  }
 }
 
 .coctails-modal__title {
@@ -23,6 +39,19 @@
   font-size: 32px;
   line-height: 1.18;
   color: $textColorBlack;
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 40px;
+    left: 288px;
+    order: 2;
+    width: 400px;
+    height: 37px;
+    margin-bottom: 28px;
+    margin-left: 32px;
+
+    color: $texttColorBlackModal;
+  }
 }
 
 .coctails-modal__sub-title {
@@ -34,6 +63,10 @@
   line-height: 1.6;
   text-transform: uppercase;
   color: $textColorBlack;
+
+  @media screen and (min-width: 768px) {
+    color: $texttColorBlackModal;
+  }
 }
 
 .coctails-modal__instruction {
@@ -45,10 +78,26 @@
   font-size: 16px;
   line-height: 1.75;
   color: $textColorGray;
+
+  @media screen and (min-width: 768px) {
+    width: 615px;
+  }
 }
 
 .coctails-modal__img {
   margin-bottom: 22px;
+
+  border-radius: 4px;
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    order: 1;
+
+    width: 288px;
+    height: 320px;
+  }
 }
 
 .coctails-modal__ingr {
@@ -60,6 +109,10 @@
   line-height: 1.6;
   text-transform: uppercase;
   color: $textColorBlack;
+
+  @media screen and (min-width: 768px) {
+    color: $texttColorBlackModal;
+  }
 }
 
 .coctails-modal__compound {
@@ -70,10 +123,18 @@
   font-size: 14px;
   line-height: 1.5;
   color: $textColorBlack;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
 }
 
 .coctails-modal__list {
   margin-bottom: 32px;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
 }
 
 .coctails-modal__item {
@@ -85,6 +146,10 @@
   font-size: 16px;
   line-height: 1.6;
   color: $texttColorBlackModal;
+
+  @media screen and (min-width: 768px) {
+    list-style-type: '✶';
+  }
 }
 
 .add-to-favorite {
@@ -102,4 +167,39 @@
 
   color: #fcfcfc;
   background: $accentColor;
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    bottom: 40px;
+    right: 28px;
+    order: 5;
+    color: $textColorWhite;
+  }
+}
+
+.remove-from-favorite {
+  width: 248px;
+}
+
+.remove-order3 {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 105px;
+    left: 322px;
+    order: 3;
+    width: 400px;
+    height: 191px;
+    // margin-left: 32px;
+  }
+}
+
+.remove-order4 {
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 348px;
+    left: 28px;
+    order: 4;
+  }
 }
