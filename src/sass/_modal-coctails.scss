@@ -1,0 +1,104 @@
+.coctails-modal {
+  position: relative;
+  width: 320px;
+  height: 100%;
+  min-height: 956px;
+
+  padding: 40px 20px;
+}
+
+.modal__icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  fill: $textColorBlack;
+}
+
+.coctails-modal__title {
+  margin-bottom: 20px;
+
+  font-family: $ffRoboto;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.18;
+  color: $textColorBlack;
+}
+
+.coctails-modal__sub-title {
+  margin-bottom: 20px;
+
+  font-family: $ffPoppins;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: $textColorBlack;
+}
+
+.coctails-modal__instruction {
+  width: 280px;
+  margin-bottom: 32px;
+
+  font-family: $ffPoppins;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+  color: $textColorGray;
+}
+
+.coctails-modal__img {
+  margin-bottom: 22px;
+}
+
+.coctails-modal__ingr {
+  margin-bottom: 8px;
+
+  font-family: $ffPoppins;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: $textColorBlack;
+}
+
+.coctails-modal__compound {
+  margin-bottom: 8px;
+
+  font-family: $ffPoppins;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $textColorBlack;
+}
+
+.coctails-modal__list {
+  margin-bottom: 32px;
+}
+
+.coctails-modal__item {
+  margin-left: 10px;
+  list-style-type: '✶';
+
+  font-family: $ffPoppins;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $texttColorBlackModal;
+}
+
+.add-to-favorite {
+  width: 185px;
+  height: 48px;
+
+  font-family: $ffRoboto;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+
+  border: none;
+  border-radius: 4px;
+
+  color: #fcfcfc;
+  background: $accentColor;
+}
