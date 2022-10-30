@@ -1,0 +1,116 @@
+.ingridient-modal {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 320px;
+  height: 100%;
+  min-height: 673px;
+
+  padding: 40px 20px;
+
+  @media screen and (min-width: 768px) {
+    width: 715px;
+    min-height: 557px;
+
+    padding: 40px 28px;
+  }
+}
+
+.ingridient-modal__title {
+  margin-bottom: 20px;
+
+  font-family: $ffRoboto;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.18;
+  color: $textColorBlack;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+  }
+}
+
+.ingridient-modal__sub-title {
+  margin-bottom: 20px;
+
+  font-family: $ffPoppins;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  color: $textColorBlack;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+}
+
+.ingridient-modal__line {
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+    border: 1px solid $accentColor;
+  }
+}
+
+.ingridient-modal__info {
+  margin-bottom: 28px;
+
+  font-family: $ffPoppins;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+  color: $textColorGray;
+}
+
+.ingridient-modal__name {
+  font-weight: 600;
+  color: $textColorBlack;
+}
+
+.ingridient-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+}
+
+.ingridient-modal__item {
+  margin-left: 10px;
+  list-style-type: '✶';
+
+  font-family: $ffPoppins;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $texttColorBlackModal;
+
+  @media screen and (min-width: 768px) {
+    list-style-type: '✶';
+  }
+}
+
+.ingridient-modal__button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-to-favorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: static;
+
+  text-align: right;
+}
