@@ -3,13 +3,13 @@ const cocktailList = document.querySelector('.coctails__list');
 
 searchBar.addEventListener('submit', onSubmit);
 
-fetchRandom();
+fetchRandom(checkDisplayType());
 
 function onSubmit() {
   event.preventDefault();
 
   if (searchBar.searchQuery.value === '') {
-    fetchRandom();
+    fetchRandom(checkDisplayType());
   } else {
     fetchByName(searchBar.searchQuery.value);
   }
@@ -25,7 +25,7 @@ function fetchByName(cocktailName) {
     .then(data => createMarkup(data));
 }
 
-function fetchRandom() {
+function checkDisplayType() {
   let quantity;
   if (window.innerWidth >= 1280) {
     quantity = 9;
@@ -34,6 +34,10 @@ function fetchRandom() {
   } else {
     quantity = 3;
   }
+  return quantity;
+}
+
+function fetchRandom(quantity) {
   const promises = [];
   for (let i = 0; i < quantity; i += 1) {
     const promise = fetch(
