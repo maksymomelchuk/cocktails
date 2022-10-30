@@ -8,9 +8,10 @@
 }
 
 .modal__icon {
-  position: absolute;
-  top: 16px;
-  right: 16px;
+  display: block;
+  // position: absolute;
+  // top: 16px;
+  // right: 16px;
   fill: $textColorBlack;
 }
 
