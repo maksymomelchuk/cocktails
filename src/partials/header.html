@@ -1,1 +1,53 @@
-<p>This is header</p>
+<header class="header">
+  <div class="header-container container">
+    <nav class="header-navigation">
+      <a href="./index.html" class="header-navigation__link">
+        <img src="./images/logo.png" alt="logo" />
+      </a>
+      <ul class="header-list">
+        <li class="header-list__item">
+          <a href="" class="header-list__link">Home</a>
+        </li>
+        <li class="header-list__item">
+          <a href="" class="header-list__link">Favorite</a>
+          <!-- Выпадающий список -->
+          <ul class="header-list-menu">
+            <li class="header-list-menu__item">
+              <a class="header-list-menu__link" href="">Favorite cocktails</a>
+            </li>
+            <li class="header-list-menu__item">
+              <a class="header-list-menu__link" href="">Favorite ingredients</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="position-search">
+      <form class="search">
+        <button type="submit" class="btn-search">
+          <svg width="24" height="24" class="search-icon">
+            <use href="./images/search.svg#icon-bx_search"></use>
+          </svg>
+        </button>
+        <input
+          class="input-search"
+          type="text"
+          name="searchQuery"
+          placeholder="Search"
+        />
+      </form>
+      <button class="menu-open" type="button">
+        <svg class="menu-icon" width="30" height="16">
+          <use href="./images/symbol-defs.svg#icon-menu"></use>
+        </svg>
+      </button>
+    </div>
+    <button class="toogle" type="button">
+      Light
+      <svg width="30" height="16">
+        <use href="./images/toggle.svg#icon-Toggle"></use>
+      </svg>
+      <span class="toogle-dark">Dark</span>
+    </button>
+  </div>
+</header>

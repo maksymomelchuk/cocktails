@@ -29,5 +29,43 @@
         </div>
       </li>
     </ul>
+    <!-- Розмітка, якщо коктейль не знайдено -->
+    <div class="coctails-no-found">
+      <p class="coctails-no-found__title">
+        Sorry, we didn't find any cocktail for you
+      </p>
+      <picture class="coctails-no-found__picture">
+        <source
+          srcset="
+            ./images/no-found-desktop.png    1x,
+            ./images/no-found@2x-desktop.png 2x,
+            ./images/no-found@3x-desktop.png 3x
+          "
+          media="(min-width: 1280px)"
+        />
+        <source
+          srcset="
+            ./images/no-found-tablet.png    1x,
+            ./images/no-found@2x-tablet.png 2x,
+            ./images/no-found@3x-tablet.png 3x
+          "
+          media="(min-width: 768px)"
+        />
+        <source
+          srcset="
+            ./images/no-found-mob.png    1x,
+            ./images/no-found@2x-mob.png 2x,
+            ./images/no-found@3x-mob.png 3x
+          "
+          media="(min-width: 320px)"
+        />
+        <img
+          src="./images/no-found-mob.png"
+          alt="no-found"
+          width="280"
+          class="coctails-no-found__img"
+        />
+      </picture>
+    </div>
   </div>
 </section>
