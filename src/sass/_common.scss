@@ -35,6 +35,10 @@ button.is-hidden {
   // pointer-events: none;
 }
 
+.is-hidden {
+  display: none;
+}
+
 .no-scroll {
   overflow: hidden;
 }

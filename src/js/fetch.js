@@ -1,4 +1,4 @@
-const searchBar = document.querySelector('.search-form');
+const searchBar = document.querySelector('.search');
 const cocktailList = document.querySelector('.coctails__list');
 
 searchBar.addEventListener('submit', onSubmit);
@@ -53,7 +53,7 @@ function fetchByLetter(letter) {
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`)
     .then(response => response.json())
     .then(data => data.drinks)
-    .then(data => data.forEach(el => console.log(el)));
+    .then(data => createMarkup(data));
 }
 
 function createMarkup(array) {
@@ -69,7 +69,7 @@ function createMarkup(array) {
           class="coctails__image"
         />
         <div class="coctails-info">
-          <p class="coctails__name">${strDrink}</p>
+          <h3 class="coctails__name">${strDrink}</h3>
           <div class="coctails__btn">
             <button type="button" class="info__btn learn-more-btn">
               Learn more
@@ -79,7 +79,7 @@ function createMarkup(array) {
                 <use href="./images/coctails-icon.svg#disactive-heart"></use>
               </svg>
             </button>
-            <button type="button" class="info__btn remove-btn is-hidden">
+            <button type="button" class="info__btn remove-btn  is-hidden">
               Remove<svg class="coctails__icon" width="18" height="18">
                 <use href="./images/coctails-icon.svg#active-heart"></use>
               </svg>
@@ -91,3 +91,5 @@ function createMarkup(array) {
     .join('');
   cocktailList.innerHTML = markup;
 }
+
+export { fetchByLetter };
