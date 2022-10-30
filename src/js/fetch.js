@@ -53,7 +53,7 @@ function fetchByLetter(letter) {
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`)
     .then(response => response.json())
     .then(data => data.drinks)
-    .then(data => data.forEach(el => console.log(el)));
+    .then(data => createMarkup(data));
 }
 
 function createMarkup(array) {
