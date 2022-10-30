@@ -1,5 +1,9 @@
 const searchBar = document.querySelector('.search');
 const cocktailList = document.querySelector('.coctails__list');
+const noCocktails = document.querySelector('.coctails-no-found');
+const cocktailsBox = document.querySelector('.cocktails__wrapper');
+const addBtn = document.querySelector('.add-to-btn');
+const removeBtn = document.querySelector('.remove-btn');
 
 searchBar.addEventListener('submit', onSubmit);
 
@@ -61,7 +65,12 @@ function fetchByLetter(letter) {
 }
 
 function createMarkup(array) {
-  console.log(array);
+  if (array === null) {
+    console.log('array is null');
+    cocktailsBox.classList.add('is-hidden');
+    noCocktails.classList.remove('is-hidden');
+    return;
+  }
   const markup = array
     .map(data => {
       const { strDrink, strDrinkThumb } = data;
@@ -94,6 +103,11 @@ function createMarkup(array) {
     })
     .join('');
   cocktailList.innerHTML = markup;
+  const addBtn = document.querySelector('.add-to-btn');
+  addBtn.addEventListener('click', onClick);
 }
 
+function onClick() {
+  console.log('click');
+}
 export { fetchByLetter };
