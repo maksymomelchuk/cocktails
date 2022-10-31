@@ -65,6 +65,9 @@ async function main(callback, searchValue) {
     }
     cocktailsBox.appendChild(ulEl);
     ulEl.addEventListener('click', event => {
+      if (event.target.nodeName !== 'LI') {
+        return;
+      }
       console.log(event.target);
       const activePage = document.querySelector('.pagination__item--active');
       activePage.classList.remove('pagination__item--active');
