@@ -106,8 +106,9 @@
 }
 .header-list-burger__item {
   margin-bottom: 32px;
-  justify-content: center;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .header-list-burger__link {
@@ -119,7 +120,11 @@
   letter-spacing: 0.02em;
   color: #000000;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  position: relative;
+}
+
+.abc {
+  position: absolute;
+  // right: 50%;
+  // top: 50%;
 }
