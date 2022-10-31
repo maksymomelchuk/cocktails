@@ -1,3 +1,4 @@
+import axios from 'axios';
 const searchBar = document.querySelector('.search');
 const cocktailList = document.querySelector('.coctails__list');
 const noCocktails = document.querySelector('.coctails-no-found');
@@ -19,9 +20,9 @@ function onSubmit() {
   }
 }
 
-function fetchByName(cocktailName) {
+async function fetchByName(cocktailName) {
   cocktailList.innerHTML = '';
-  fetch(
+  return fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`
   )
     .then(response => response.json())
@@ -89,12 +90,12 @@ function createMarkup(array) {
             </button>
             <button type="button" class="info__btn add-to-btn">
               Add to<svg class="coctails__icon" width="18" height="18">
-                <use href="./images/coctails-icon.svg#disactive-heart"></use>
+                <use href="/coctails-icon.6571b9e4.svg#active-heart"></use>
               </svg>
             </button>
             <button type="button" class="info__btn remove-btn  is-hidden">
               Remove<svg class="coctails__icon" width="18" height="18">
-                <use href="./images/coctails-icon.svg#active-heart"></use>
+                <use href=".src/images/coctails-icon.svg#active-heart"></use>
               </svg>
             </button>
           </div>
@@ -110,4 +111,5 @@ function createMarkup(array) {
 function onClick() {
   console.log('click');
 }
-export { fetchByLetter };
+
+export { fetchByLetter, checkDisplayType, fetchByName, createMarkup };
