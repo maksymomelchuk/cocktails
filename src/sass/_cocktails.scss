@@ -324,8 +324,17 @@
     justify-content: center;
     align-items: center;
 
+    transition: $timingFunction;
+
     &:hover {
+      background-color: $accentColor;
+      color: $textColorWhite;
       cursor: pointer;
     }
   }
+}
+
+li.pagination__item--active {
+  background-color: $accentColor;
+  color: $textColorWhite;
 }
