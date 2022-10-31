@@ -36,16 +36,16 @@ const getTabletTemplate = () => {
   const filterArr = [];
   for (let i = 65; i <= 90; i += 1) {
     filterArr.push(
-      `<li class="item" data-type="item" data-id="&#${i}"><button type="button" class="fillter_button">&#${i}</button></li>`
+      `<li class="item" data-type="item""><button  data-id="&#${i}" type="button" class="fillter_button">&#${i}</button></li>`
     );
   }
   for (let i = 49; i <= 57; i += 1) {
     filterArr.push(
-      `<li class="item" data-type="item" data-id="&#${i}"><button type="button" class="fillter_button">&#${i}</button></li>`
+      `<li class="item" data-type="item" "><button data-id="&#${i}" type="button" class="fillter_button">&#${i}</button></li>`
     );
   }
   filterArr.push(
-    `<li class="item" data-type="item" data-id="&#48"><button type="button" class="fillter_button">&#48</button></li>`
+    `<li class="item" data-type="item" ><button data-id="&#48" type="button" class="fillter_button">&#48</button></li>`
   );
 
   fillter__list.insertAdjacentHTML('beforeend', filterArr.join(''));
@@ -57,12 +57,13 @@ getTabletTemplate();
 fillter__list.addEventListener('click', fillterClick);
 let currentEl;
 function fillterClick(event) {
-  const symbol = event.target.textContent;
+  const symbol = event.target.dataset.id;
 
   if (event.path[0].classList.contains('fillter_button')) {
     if (currentEl) {
       currentEl.classList.remove('fillter_button--current');
     }
+    console.log(event.target.dataset.id);
     try {
       fetchByLetter(symbol);
     } catch (error) {
