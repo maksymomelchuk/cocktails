@@ -59,7 +59,7 @@
   }
 }
 .toggle-burger-dark {
-  color: #202025;
+  color: $textColorBlack;
 }
 .search-burger {
   display: flex;
@@ -106,13 +106,12 @@
 }
 .header-list-burger__item {
   margin-bottom: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  @media screen and (min-width: 768px) {
+  }
 }
 
 .header-list-burger__link {
-  font-family: 'Poppins';
+  font-family: $ffPoppins;
   font-style: normal;
   font-weight: 400;
   font-size: 28px;
@@ -120,11 +119,14 @@
   letter-spacing: 0.02em;
   color: #000000;
   text-decoration: none;
-  position: relative;
+  align-items: center;
+  display: flex;
+  gap: 8px;
 }
 
-.abc {
-  position: absolute;
-  // right: 50%;
-  // top: 50%;
+.container-list {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
 }
