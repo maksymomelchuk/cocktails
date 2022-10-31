@@ -112,7 +112,7 @@
 .sign-in-button {
   border: none;
   color: $textColorWhite;
-  transition: box-shadow 1000ms $timingFunction;
+  transition: box-shadow 250ms $timingFunction;
 
   &:hover,
   &:focus {
