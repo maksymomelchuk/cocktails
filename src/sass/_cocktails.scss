@@ -143,6 +143,7 @@
   width: 108px;
   height: 39px;
   padding: 7px 16px;
+  cursor: pointer;
 
   text-align: center;
   font-family: $ffRoboto;
@@ -182,6 +183,7 @@
 
   &:hover,
   &:focus {
+    outline: none;
     color: $accentColor;
     background-color: #f5f5f5;
   }
@@ -210,8 +212,8 @@
 
   &:hover,
   &:focus {
+    outline: none;
     border: 2px solid $accentColor;
-
     background-color: #f5f5f5;
   }
 
