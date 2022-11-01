@@ -147,37 +147,33 @@ p {
 
 ////////////////////////////////
 .header-list-menu__link {
-  @media screen and (min-width: 1280px) {
-    text-decoration: none;
-    font-family: $ffPoppins;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.33;
-    letter-spacing: 0.02em;
-    padding: 12px;
-    color: #000000;
-    border-radius: 4px;
-    display: block;
-    &:hover,
-    &:focus {
-      color: $textColorWhite;
-      background-color: $accentColor;
-    }
+  text-decoration: none;
+  font-family: $ffPoppins;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: 0.02em;
+  padding: 12px;
+  color: #000000;
+  border-radius: 4px;
+  display: block;
+  &:hover,
+  &:focus {
+    color: $textColorWhite;
+    background-color: $accentColor;
   }
 }
 
 .header-list-menu {
-  @media screen and (min-width: 1280px) {
-    position: absolute;
-    width: 212px;
-    height: 98px;
-    border: 1px solid $accentColor;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 8px;
-    border-radius: 4px;
-  }
+  position: absolute;
+  width: 212px;
+  height: 98px;
+  border: 1px solid $accentColor;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 8px;
+  border-radius: 4px;
 }
 
 .header-list-menu__item {
