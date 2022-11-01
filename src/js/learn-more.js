@@ -7,7 +7,7 @@ openLearnMore.addEventListener('click', onOpenLearnMore);
 closeLearnMore.addEventListener('click', onCloseLearnMore);
 
 function onOpenLearnMore(event) {
-  console.log(event.target.classList);
+  // console.log(event.target.classList);
   if (event.target.classList.contains('learn-more-btn')) {
     learnMoreMenu.classList.remove('is-close');
   }

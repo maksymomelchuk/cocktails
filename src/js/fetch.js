@@ -32,11 +32,14 @@ cocktailList.addEventListener('click', event => {
     active.classList.remove('visually-hidden');
     event.target.classList.add('visually-hidden');
 
-    console.log(event.target.previousElementSibling.dataset.name);
-
-    // const favoriteCocktailData = fetchByName(favoriteCocktail).then(data =>
-    //   console.log(data)
-    // );
+    const cocktailName = event.target.previousElementSibling.dataset.name;
+    const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
+      el => el.name === cocktailName
+    );
+    const currentFavorites =
+      JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+    currentFavorites.push(cocktailFromLocalStorage);
+    localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
   }
 });
 
@@ -238,6 +241,14 @@ function fetchRandom(quantity) {
     .then(data => createMarkup(data));
 }
 
+async function fetchIngridient(ingridient) {
+  return fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingridient}`
+  )
+    .then(response => response.json())
+    .then(data => console.log(data.ingredients[0]))
+    .catch(error => console.log(error));
+}
 fetchRandom(checkDisplayType());
 
 export { pagination, fetchByLetter };
