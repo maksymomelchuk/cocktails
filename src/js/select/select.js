@@ -15,7 +15,7 @@ const getTemplate = () => {
   );
 
   //   select__list.insertAdjacentHTML('beforeend', selectArr.join(''));
-  return selectArr.join('');
+  return selectArr;
 };
 
 export class Select {
@@ -33,7 +33,7 @@ export class Select {
     // const { data } = this.options;
     this.el.classList.add('select');
 
-    this.wrap.innerHTML = getTemplate();
+    this.wrap.innerHTML = getTemplate().join('');
     this.input.textContent = this.selectedId;
     this.el
       .querySelector(`[data-id="${this.selectedId}"]`)
@@ -42,7 +42,9 @@ export class Select {
   #setup() {
     this.clickHandler = this.clickHandler.bind(this);
     this.closeSelectOnClick = this.closeSelectOnClick.bind(this);
+
     this.el.addEventListener('click', this.clickHandler);
+
     // this.options = options;
   }
 
@@ -71,6 +73,7 @@ export class Select {
       .forEach(el => el.classList.remove('selected'));
 
     this.el.querySelector(`[data-id="${id}"]`).classList.add('selected');
+
     this.close();
   }
   closeSelectOnClick(event) {

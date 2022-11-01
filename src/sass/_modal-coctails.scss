@@ -18,16 +18,33 @@
   }
 }
 
-.modal__icon {
+.coctails-close-btn {
+  width: 32px;
+  height: 32px;
   display: block;
   position: absolute;
   top: 16px;
   right: 16px;
-  fill: $textColorBlack;
+  border: none;
+  background-color: rgba($color: #000000, $alpha: 0);
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     top: 12px;
     right: 12px;
+  }
+}
+
+.modal__icon {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  fill: $textColorBlack;
+
+  @media screen and (min-width: 768px) {
+    top: 0px;
+    right: 0px;
   }
 }
 
@@ -130,6 +147,9 @@
 }
 
 .coctails-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   margin-bottom: 32px;
 
   @media screen and (min-width: 768px) {
