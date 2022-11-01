@@ -1,18 +1,54 @@
+.coctails-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4));
+  opacity: 1;
+
+  transition: opacity 1000ms $timingFunction;
+
+  &.is-close {
+    opacity: 0;
+    pointer-events: none;
+  }
+  &.is-close .coctails-modal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6) rotateY(180deg);
+  }
+}
+
 .coctails-modal {
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
-  width: 320px;
+  align-items: flex-start;
+  background-color: #ffffff;
   height: 100%;
-  min-height: 956px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+
+  // position: relative;
+  // width: 320px;
+
+  // min-height: 956px;
 
   padding: 40px 20px;
-
+  transform: translate(-50%, -50%) scale(1) rotateY(0);
+  transition: opacity 2000ms $timingFunction, transform 1000ms $timingFunction;
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
-    width: 822px;
-    min-height: 598px;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 822px;
+
+    height: 598px;
 
     padding: 40px 28px;
   }
@@ -200,8 +236,9 @@
   }
 
   @media screen and (min-width: 768px) {
+    z-index: 1;
     position: absolute;
-    bottom: 40px;
+    bottom: 28px;
     right: 28px;
     order: 5;
     color: $textColorWhite;
