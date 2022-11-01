@@ -42,12 +42,16 @@
         </svg>
       </button>
     </div>
-    <button class="toogle" type="button">
-      Light
-      <svg width="40" height="20">
-        <use href="./images/toggle.svg#icon-Toggle"></use>
-      </svg>
-      <span class="toogle-dark">Dark</span>
-    </button>
+    <div class="toggle hidden">
+      <input
+        type="checkbox"
+        id="themeSwitch"
+        name="theme-switch"
+        class="theme-switch__input"
+      />
+      <label for="themeSwitch" class="theme-switch__label">
+        <span class="switch"></span>
+      </label>
+    </div>
   </div>
 </header>

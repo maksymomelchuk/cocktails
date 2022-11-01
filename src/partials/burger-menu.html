@@ -3,14 +3,17 @@
     <a href="./index.html" class="burger-logo">
       <img src="./images/logo.png" alt="logo" />
     </a>
-
-    <button type="button" class="btn-toggle-burger">
-      Light
-      <svg width="40" height="20">
-        <use href="./images/toggle.svg#icon-Toggle"></use>
-      </svg>
-      <span class="toogle-dark toggle-burger-dark">Dark</span>
-    </button>
+    <div class="toggle">
+      <label for="themeSwitch" class="theme-switch__label">
+        <input
+          type="checkbox"
+          id="themeSwitch"
+          name="theme-switch"
+          class="theme-switch__input"
+        />
+        <span class="switch"></span>
+      </label>
+    </div>
   </div>
   <button type="button" class="btn-vector-burger">
     <svg width="18" height="18" class="close-burger-menu">
@@ -42,9 +45,11 @@
             <use href="./images/toggle.svg#icon-Vector"></use>
           </svg>
         </a>
-        <ul class="header-list-menu">
+        <ul class="header-list-burger-menu visually-hidden">
           <li class="header-list-menu__item">
-            <a class="header-list-menu__link" href="">Favorite cocktails</a>
+            <a class="header-list-burger-menu__link" href=""
+              >Favorite cocktails</a
+            >
           </li>
           <li class="header-list-menu__item">
             <a class="header-list-menu__link" href="">Favorite ingredients</a>
