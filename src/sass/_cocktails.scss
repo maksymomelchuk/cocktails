@@ -308,3 +308,40 @@
     width: 345px;
   }
 }
+
+.pagination {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+
+  gap: 12px;
+
+  &__item {
+    font-family: $ffMont;
+    color: #1e1e1e;
+    font-size: 16px;
+    line-height: 1.25;
+
+    width: 40px;
+    height: 40px;
+    border: 1px solid $accentColor;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: $timingFunction;
+
+    &:hover {
+      background-color: $accentColor;
+      color: $textColorWhite;
+      cursor: pointer;
+    }
+  }
+}
+
+li.pagination__item--active {
+  background-color: $accentColor;
+  color: $textColorWhite;
+}
