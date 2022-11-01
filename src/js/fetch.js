@@ -30,10 +30,10 @@ cocktailList.addEventListener('click', event => {
     active.classList.remove('visually-hidden');
     event.target.classList.add('visually-hidden');
 
-    const favoriteCocktail = event.target.previousElementSibling.dataset.name;
-    const favoriteCocktailData = fetchByName(favoriteCocktail).then(data =>
-      console.log(data)
-    );
+    console.log(event.target.previousElementSibling.dataset.name);
+    // const favoriteCocktailData = fetchByName(favoriteCocktail).then(data =>
+    //   console.log(data)
+    // );
   }
 });
 
