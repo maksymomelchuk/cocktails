@@ -17,6 +17,9 @@
     grid-auto-rows: minmax(auto auto);
     align-items: flex-start;
   }
+  @media screen and (min-width: 1280px) {
+    padding-top: 97px;
+  }
 }
 
 .hero__title {
@@ -35,6 +38,13 @@
     margin-bottom: 40;
     grid-area: 1 / 1 / 2 / 2;
   }
+  @media screen and (min-width: 1280px) {
+    font-size: 52px;
+    line-height: 1.54;
+    width: 688px;
+    margin-right: 59px;
+    margin-top: 0;
+  }
 }
 .hero__picture {
   width: 280px;
@@ -45,6 +55,10 @@
     grid-column-start: 2;
     grid-row-start: 1;
     grid-row-end: 3;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 501px;
+    height: 439px;
   }
 }
 
@@ -76,6 +90,10 @@
     margin-top: 0;
     margin-bottom: 40px;
     text-align-last: left;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.56;
   }
 }
 .select__wrap {
@@ -225,6 +243,10 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 1px;
+  @media screen and (min-width: 1280px) {
+    width: 520px;
+    gap: 0px;
+  }
 }
 
 .fillter_button {
@@ -241,6 +263,13 @@
   text-align: center;
   background-color: white;
   border: none;
+
+  @media screen and (min-width: 1280px) {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    line-height: 1.5;
+  }
 
   &:hover,
   &:focus {
