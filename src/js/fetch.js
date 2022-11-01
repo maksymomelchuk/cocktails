@@ -25,6 +25,15 @@ cocktailList.addEventListener('click', event => {
 
   if (favorite === 'false') {
     event.target.dataset.favorite = true;
+
+    const active = event.target.nextElementSibling;
+    active.classList.remove('visually-hidden');
+    event.target.classList.add('visually-hidden');
+
+    const favoriteCocktail = event.target.previousElementSibling.dataset.name;
+    const favoriteCocktailData = fetchByName(favoriteCocktail).then(data =>
+      console.log(data)
+    );
   }
 });
 
@@ -42,13 +51,15 @@ function onSubmit() {
 
 async function fetchByName(cocktailName) {
   cocktailList.innerHTML = '';
-  return fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`
-  )
-    .then(response => response.json())
-    .then(data => data.drinks)
-    .then(data => addQueryToLocalStorage(data))
-    .catch(error => console.log(error));
+  return (
+    fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`
+    )
+      .then(response => response.json())
+      .then(data => data.drinks)
+      // .then(data => addQueryToLocalStorage(data))
+      .catch(error => console.log(error))
+  );
 }
 
 function addQueryToLocalStorage(array) {
@@ -84,6 +95,7 @@ async function fetchByLetter(letter) {
 
 async function pagination(callback, searchValue) {
   const data = await callback(searchValue);
+  const addToLocal = await addQueryToLocalStorage(data);
   let currentPage = 1;
   let cardsPerPage = checkDisplayType();
 
@@ -181,9 +193,9 @@ async function createMarkup(array) {
                 <use href="/coctails-icon.6571b9e4.svg#disactive-heart"></use>
               </svg>
             </button>
-            <button type="button" class="info__btn remove-btn  is-hidden">
+            <button type="button" class="info__btn remove-btn  visually-hidden">
               Remove<svg class="coctails__icon" width="18" height="18">
-                <use href=".src/images/coctails-icon.svg#active-heart"></use>
+                <use href="/coctails-icon.6571b9e4.svg#active-heart"></use>
               </svg>
             </button>
           </div>
