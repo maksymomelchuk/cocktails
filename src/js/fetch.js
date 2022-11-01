@@ -1,4 +1,5 @@
 import axios from 'axios';
+import image from '../images/no-found-desktop.png';
 
 const searchBar = document.querySelector('.search');
 const cocktailList = document.querySelector('.coctails__list');
@@ -6,6 +7,7 @@ const cocktailsBox = document.querySelector('.cocktails__wrapper');
 const cocktailsItem = document.querySelector('.coctails__item');
 const noCocktails = document.querySelector('.coctails-no-found');
 const learnMoreBtn = document.querySelector('.learn-more-btn');
+const containerRef = document.querySelector('#main-container');
 
 cocktailList.addEventListener('click', event => {
   if (event.target.nodeName !== 'BUTTON') {
@@ -31,6 +33,7 @@ cocktailList.addEventListener('click', event => {
     event.target.classList.add('visually-hidden');
 
     console.log(event.target.previousElementSibling.dataset.name);
+
     // const favoriteCocktailData = fetchByName(favoriteCocktail).then(data =>
     //   console.log(data)
     // );
@@ -47,6 +50,7 @@ function onSubmit() {
   } else {
     pagination(fetchByName, searchBar.searchQuery.value);
   }
+  searchBar.reset();
 }
 
 async function fetchByName(cocktailName) {
@@ -63,6 +67,9 @@ async function fetchByName(cocktailName) {
 }
 
 function addQueryToLocalStorage(array) {
+  if (array === null) {
+    return;
+  }
   const newArray = array.map(data => {
     const { strDrink, strInstructions, strDrinkThumb } = data;
     let cocktail = '';
@@ -86,11 +93,13 @@ function addQueryToLocalStorage(array) {
 
 async function fetchByLetter(letter) {
   cocktailList.innerHTML = '';
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`)
-    .then(response => response.json())
-    .then(data => data.drinks)
-    // .then(data => addQueryToLocalStorage(data))
-    .catch(error => console.log(error));
+  return (
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`)
+      .then(response => response.json())
+      .then(data => data.drinks)
+      // .then(data => addQueryToLocalStorage(data))
+      .catch(error => console.log(error))
+  );
 }
 
 async function pagination(callback, searchValue) {
@@ -101,9 +110,13 @@ async function pagination(callback, searchValue) {
 
   async function displayList(array, cards, page) {
     if (array === null) {
-      cocktailsBox.classList.add('is-hidden');
-      noCocktails.classList.remove('is-hidden');
+      console.log('array is null');
+      cocktailsBox.classList.add('visually-hidden');
+      noCocktails.classList.remove('visually-hidden');
       return;
+    } else {
+      cocktailsBox.classList.remove('visually-hidden');
+      noCocktails.classList.add('visually-hidden');
     }
     const start = cards * (page - 1);
     const end = start + cards;
@@ -123,7 +136,8 @@ async function pagination(callback, searchValue) {
     }
     const ulEl = document.createElement('ul');
     ulEl.classList.add('pagination');
-
+    console.log(ulEl);
+    console.log(pagesCount);
     for (let i = 0; i < pagesCount; i += 1) {
       const liEl = displayPaginationBtn(i + 1);
       ulEl.appendChild(liEl);
@@ -153,7 +167,7 @@ async function pagination(callback, searchValue) {
   }
 
   try {
-    displayList(data, cardsPerPage, currentPage);
+    await displayList(data, cardsPerPage, currentPage);
     displayPagination(data, cardsPerPage);
   } catch (error) {}
 }
@@ -225,3 +239,5 @@ function fetchRandom(quantity) {
 }
 
 fetchRandom(checkDisplayType());
+
+export { pagination, fetchByLetter };
