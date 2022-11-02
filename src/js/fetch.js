@@ -1,5 +1,6 @@
 import axios from 'axios';
-import image from '../images/no-found-desktop.png';
+import activeHeart from '../images/coctails-icon.svg#active-heart';
+import disactiveHeart from '../images/coctails-icon.svg#disactive-heart';
 
 const searchBar = document.querySelector('.search');
 const cocktailList = document.querySelector('.coctails__list');
@@ -8,6 +9,41 @@ const cocktailsItem = document.querySelector('.coctails__item');
 const noCocktails = document.querySelector('.coctails-no-found');
 const learnMoreBtn = document.querySelector('.learn-more-btn');
 const containerRef = document.querySelector('#main-container');
+
+const heartActive = `<span class="heart-active">
+                  <svg
+                    class="coctails__icon"
+                    width="21"
+                    height="19"
+                    viewBox="0 0 21 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.5 19L8.9775 17.6332C3.57 12.7978 0 9.60872 0 5.69482C0 2.50572 2.541 0 5.775 0C7.602 0 9.3555 0.838692 10.5 2.16403C11.6445 0.838692 13.398 0 15.225 0C18.459 0 21 2.50572 21 5.69482C21 9.60872 17.43 12.7978 12.0225 17.6436L10.5 19Z"
+                      fill="#FD5103"
+                    />
+                  </svg>
+                </span>`;
+const heartDisactive = `<span class="heart-disactive">
+                  <svg
+                    class="coctails__icon"
+                    width="21"
+                    height="19"
+                    viewBox="0 0 21 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.5 19L8.9775 17.6332C3.57 12.7978 0 9.60872 0 5.69482C0 2.50572 2.541 0 5.775 0C7.602 0 9.3555 0.838692 10.5 2.16403C11.6445 0.838692 13.398 0 15.225 0C18.459 0 21 2.50572 21 5.69482C21 9.60872 17.43 12.7978 12.0225 17.6436L10.5 19Z"
+                      fill="#FD5103"
+                    />
+                    <path
+                      d="M10.5 17L9.2675 15.921C4.89 12.1035 2 9.58583 2 6.49591C2 3.9782 4.057 2 6.675 2C8.154 2 9.5735 2.66213 10.5 3.70845C11.4265 2.66213 12.846 2 14.325 2C16.943 2 19 3.9782 19 6.49591C19 9.58583 16.11 12.1035 11.7325 15.9292L10.5 17Z"
+                      fill="#FCFCFC"
+                    />
+                  </svg>
+                </span>`;
 
 cocktailList.addEventListener('click', event => {
   if (event.target.nodeName !== 'BUTTON') {
@@ -23,12 +59,7 @@ cocktailList.addEventListener('click', event => {
   } else if (favorite === 'false') {
     event.target.dataset.favorite = true;
     const active = event.target;
-    active.innerHTML = `Remove<span class="heart-active">
-                  <svg class="coctails__icon" width="18" height="18">
-                    <use
-                      href="./coctails-icon.6571b9e4.svg#active-heart"
-                    ></use>
-                  </svg></span>`;
+    active.innerHTML = `Remove${heartActive}`;
     const cocktailName = event.target.previousElementSibling.dataset.name;
     const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
       el => el.name === cocktailName
@@ -41,12 +72,7 @@ cocktailList.addEventListener('click', event => {
     event.target.dataset.favorite = false;
     const active = event.target;
 
-    active.innerHTML = `Add to<span class="heart-active">
-                  <svg class="coctails__icon" width="18" height="18">
-                    <use
-                      href="./coctails-icon.6571b9e4.svg#disactive-heart"
-                    ></use>
-                  </svg></span>`;
+    active.innerHTML = `Add to${heartDisactive}`;
     const cocktailName = event.target.previousElementSibling.dataset.name;
     const cocktailFromLocalStorage = JSON.parse(
       localStorage.favoriteCocktails
@@ -216,10 +242,11 @@ async function createMarkup(array) {
       let btnText;
       if (favorite) {
         btnText = 'Remove';
-        isFavorite = './coctails-icon.6571b9e4.svg#active-heart';
+
+        isFavorite = heartActive;
       } else {
         btnText = 'Add to';
-        isFavorite = './coctails-icon.6571b9e4.svg#disactive-heart';
+        isFavorite = heartDisactive;
       }
       return `<li class="coctails__item">
         <img
@@ -235,9 +262,7 @@ async function createMarkup(array) {
               Learn more
             </button>
             <button type="button" class="info__btn add-to-btn" data-favorite="${favorite}">
-              ${btnText}<span><svg class="coctails__icon" width="18" height="18">
-                <use href="${isFavorite}"></use>
-              </svg></span>
+              ${btnText}${isFavorite}
             </button>
 
           </div>
