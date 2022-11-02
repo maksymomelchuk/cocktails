@@ -1,5 +1,5 @@
 import axios from 'axios';
-import image from '../images/no-found-desktop.png';
+import activeHeart from '../images/coctails-icon.svg#active-heart';
 
 const searchBar = document.querySelector('.search');
 const cocktailList = document.querySelector('.coctails__list');
