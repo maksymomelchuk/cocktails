@@ -40,13 +40,13 @@ cocktailList.addEventListener('click', event => {
     // event.target.classList.add('visually-hidden');
     const cocktailName = event.target.previousElementSibling.dataset.name;
     console.log('cocktailName', cocktailName);
-    const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
-      el => el.name === cocktailName
-    );
-    const currentFavorites =
-      JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
-    currentFavorites.push(cocktailFromLocalStorage);
-    localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
+    // const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
+    //   el => el.name === cocktailName
+    // );
+    // const currentFavorites =
+    //   JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+    // currentFavorites.push(cocktailFromLocalStorage);
+    // localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
   }
 });
 
