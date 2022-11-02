@@ -1,5 +1,5 @@
 import { Select } from './select/select';
-import { fetchByLetter } from './fetch';
+import { fetchByLetter, pagination } from './fetch';
 const select = new Select('#select', {
   selectedId: 'A',
 });
@@ -11,10 +11,12 @@ const input = document.querySelector('#select');
 input.addEventListener('click', onInputClick);
 
 function onInputClick(event) {
+  console.log('before if');
   if (event.path[0].classList.contains('select__item')) {
     console.log(select.selectedId);
     try {
-      fetchByLetter(select.selectedId);
+      console.log('try');
+      pagination(fetchByLetter, select.selectedId);
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +67,7 @@ function fillterClick(event) {
     }
     console.log(event.target.dataset.id);
     try {
-      fetchByLetter(symbol);
+      pagination(fetchByLetter, symbol);
     } catch (error) {
       console.log(error);
     }

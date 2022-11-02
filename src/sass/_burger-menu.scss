@@ -28,7 +28,7 @@
   }
 }
 .btn-vector-burger {
-  background-color: #ffffff;
+  background-color: #fcfcfc;
   border: none;
   display: block;
   position: absolute;
@@ -39,28 +39,7 @@
     top: 24px;
   }
 }
-.btn-toggle-burger {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: $textColorWhite;
-  font-family: $ffPoppins;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.71;
-  color: $accentColor;
-  border: none;
-  @media screen and (min-width: 768px) {
-    margin-left: 60px;
-    gap: 12px;
-    font-size: 18px;
-    line-height: 1.33;
-  }
-}
-.toggle-burger-dark {
-  color: $textColorBlack;
-}
+
 .search-burger {
   display: flex;
   margin-top: 40px;
@@ -129,4 +108,29 @@
     display: flex;
     justify-content: center;
   }
+}
+
+.header-list-burger-menu {
+  position: absolute;
+  width: 212px;
+  height: 98px;
+  border: 1px solid $accentColor;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.header-list-burger-menu__link {
+  text-decoration: none;
+  font-family: $ffPoppins;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: 0.02em;
+  padding: 12px;
+  color: #000000;
+  border-radius: 4px;
+  display: block;
 }
