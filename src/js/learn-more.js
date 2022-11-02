@@ -15,7 +15,7 @@ function onOpenLearnMore(event) {
   if (event.target.classList.contains('learn-more-btn')) {
     learnMoreMenu.classList.remove('is-close');
     coctName = event.target.dataset.name;
-    coctTitle = document.querySelector('.coctails-modal__title');
+    const coctTitle = document.querySelector('.coctails-modal__title');
     coctTitle.textContent = coctName;
     body.classList.add('no-scroll');
     const coctImg = document.querySelector('.coctails-modal__img');
