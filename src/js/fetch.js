@@ -27,7 +27,7 @@ cocktailList.addEventListener('click', event => {
     active.innerHTML = `Remove<span class="heart-active">
                   <svg class="coctails__icon" width="18" height="18">
                     <use
-                      href="coctails-icon.6571b9e4.svg#active-heart"
+                      href="/coctails-icon.6571b9e4.svg#active-heart"
                     ></use>
                   </svg></span>`;
     const cocktailName = event.target.previousElementSibling.dataset.name;
@@ -45,7 +45,7 @@ cocktailList.addEventListener('click', event => {
     active.innerHTML = `Add to<span class="heart-active">
                   <svg class="coctails__icon" width="18" height="18">
                     <use
-                      href="coctails-icon.6571b9e4.svg#disactive-heart"
+                      href="/coctails-icon.6571b9e4.svg#disactive-heart"
                     ></use>
                   </svg></span>`;
     const cocktailName = event.target.previousElementSibling.dataset.name;
@@ -217,10 +217,11 @@ async function createMarkup(array) {
       let btnText;
       if (favorite) {
         btnText = 'Remove';
-        isFavorite = 'coctails-icon.6571b9e4.svg#active-heart';
+
+        isFavorite = '/coctails-icon.6571b9e4.svg#active-heart';
       } else {
         btnText = 'Add to';
-        isFavorite = 'coctails-icon.6571b9e4.svg#disactive-heart';
+        isFavorite = '/coctails-icon.6571b9e4.svg#disactive-heart';
       }
       return `<li class="coctails__item">
         <img
