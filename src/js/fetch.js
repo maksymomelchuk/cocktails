@@ -14,39 +14,47 @@ cocktailList.addEventListener('click', event => {
     return;
   }
   let { name, modal, favorite } = event.target.dataset;
-
   if (name) {
     const cocktailName = name;
-    console.log('cocktailName', cocktailName);
 
     const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
       el => el.name === cocktailName
     );
-    console.log('cocktailFromLocalStorage', cocktailFromLocalStorage);
-  }
-
-  if (favorite === 'false') {
+  } else if (favorite === 'false') {
     event.target.dataset.favorite = true;
-    console.log(event.target.dataset.favorite);
     const active = event.target;
     active.innerHTML = `Remove<span class="heart-active">
                   <svg class="coctails__icon" width="18" height="18">
                     <use
-                      href="/coctails-icon.6571b9e4.svg#active-heart"
+                      href="./coctails-icon.6571b9e4.svg#active-heart"
                     ></use>
                   </svg></span>`;
-    console.log('active', active);
-    // active.classList.remove('visually-hidden');
-    // event.target.classList.add('visually-hidden');
     const cocktailName = event.target.previousElementSibling.dataset.name;
-    console.log('cocktailName', cocktailName);
-    // const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
-    //   el => el.name === cocktailName
-    // );
-    // const currentFavorites =
-    //   JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
-    // currentFavorites.push(cocktailFromLocalStorage);
-    // localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
+    const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
+      el => el.name === cocktailName
+    );
+    const currentFavorites =
+      JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+    currentFavorites.push(cocktailFromLocalStorage);
+    localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
+  } else if (favorite === 'true') {
+    event.target.dataset.favorite = false;
+    const active = event.target;
+
+    active.innerHTML = `Add to<span class="heart-active">
+                  <svg class="coctails__icon" width="18" height="18">
+                    <use
+                      href="./coctails-icon.6571b9e4.svg#disactive-heart"
+                    ></use>
+                  </svg></span>`;
+    const cocktailName = event.target.previousElementSibling.dataset.name;
+    const cocktailFromLocalStorage = JSON.parse(
+      localStorage.favoriteCocktails
+    ).filter(el => el.name !== cocktailName);
+    localStorage.setItem(
+      'favoriteCocktails',
+      JSON.stringify(cocktailFromLocalStorage)
+    );
   }
 });
 
@@ -120,7 +128,6 @@ async function pagination(callback, searchValue) {
 
   async function displayList(array, cards, page) {
     if (array === null) {
-      console.log('array is null');
       cocktailsBox.classList.add('visually-hidden');
       noCocktails.classList.remove('visually-hidden');
       return;
@@ -146,8 +153,7 @@ async function pagination(callback, searchValue) {
     }
     const ulEl = document.createElement('ul');
     ulEl.classList.add('pagination');
-    console.log(ulEl);
-    console.log(pagesCount);
+
     for (let i = 0; i < pagesCount; i += 1) {
       const liEl = displayPaginationBtn(i + 1);
       ulEl.appendChild(liEl);
@@ -197,8 +203,24 @@ function checkDisplayType() {
 async function createMarkup(array) {
   const markup = array
     .map(data => {
-      const favorite = localStorage.favoriteCocktails || false;
       const { strDrink, strDrinkThumb } = data;
+      const localSt = JSON.parse(localStorage.getItem('favoriteCocktails'));
+      let favorite;
+      if (localSt) {
+        favorite =
+          localSt.findIndex(el => el.name === strDrink) > -1 ? true : false;
+      } else {
+        favorite = false;
+      }
+      let isFavorite;
+      let btnText;
+      if (favorite) {
+        btnText = 'Remove';
+        isFavorite = './coctails-icon.6571b9e4.svg#active-heart';
+      } else {
+        btnText = 'Add to';
+        isFavorite = './coctails-icon.6571b9e4.svg#disactive-heart';
+      }
       return `<li class="coctails__item">
         <img
           src="${strDrinkThumb}"
@@ -213,15 +235,11 @@ async function createMarkup(array) {
               Learn more
             </button>
             <button type="button" class="info__btn add-to-btn" data-favorite="${favorite}">
-              Add to<span><svg class="coctails__icon" width="18" height="18">
-                <use href="/coctails-icon.6571b9e4.svg#disactive-heart"></use>
+              ${btnText}<span><svg class="coctails__icon" width="18" height="18">
+                <use href="${isFavorite}"></use>
               </svg></span>
             </button>
-            <button type="button" class="info__btn remove-btn  visually-hidden">
-              Remove<svg class="coctails__icon" width="18" height="18">
-                <use href="/coctails-icon.6571b9e4.svg#active-heart"></use>
-              </svg>
-            </button>
+
           </div>
         </div>
       </li>`;
