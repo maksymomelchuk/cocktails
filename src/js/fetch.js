@@ -301,4 +301,4 @@ async function fetchIngridient(ingridient) {
 }
 fetchRandom(checkDisplayType());
 
-export { pagination, fetchByLetter, fetchIngridient };
+export { pagination, fetchByLetter, fetchIngridient, createMarkup };
