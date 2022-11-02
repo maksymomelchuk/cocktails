@@ -27,12 +27,19 @@ cocktailList.addEventListener('click', event => {
 
   if (favorite === 'false') {
     event.target.dataset.favorite = true;
-
-    const active = event.target.nextElementSibling;
-    active.classList.remove('visually-hidden');
-    event.target.classList.add('visually-hidden');
-
+    console.log(event.target.dataset.favorite);
+    const active = event.target;
+    active.innerHTML = `Remove<span class="heart-active">
+                  <svg class="coctails__icon" width="18" height="18">
+                    <use
+                      href="/coctails-icon.6571b9e4.svg#active-heart"
+                    ></use>
+                  </svg></span>`;
+    console.log('active', active);
+    // active.classList.remove('visually-hidden');
+    // event.target.classList.add('visually-hidden');
     const cocktailName = event.target.previousElementSibling.dataset.name;
+    console.log('cocktailName', cocktailName);
     const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
       el => el.name === cocktailName
     );
@@ -206,9 +213,9 @@ async function createMarkup(array) {
               Learn more
             </button>
             <button type="button" class="info__btn add-to-btn" data-favorite="${favorite}">
-              Add to<svg class="coctails__icon" width="18" height="18">
+              Add to<span><svg class="coctails__icon" width="18" height="18">
                 <use href="/coctails-icon.6571b9e4.svg#disactive-heart"></use>
-              </svg>
+              </svg></span>
             </button>
             <button type="button" class="info__btn remove-btn  visually-hidden">
               Remove<svg class="coctails__icon" width="18" height="18">
