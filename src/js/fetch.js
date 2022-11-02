@@ -16,20 +16,17 @@ cocktailList.addEventListener('click', event => {
   let { name, modal, favorite } = event.target.dataset;
   if (name) {
     const cocktailName = name;
-    console.log('cocktailName', cocktailName);
 
     const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
       el => el.name === cocktailName
     );
-    console.log('cocktailFromLocalStorage', cocktailFromLocalStorage);
   } else if (favorite === 'false') {
     event.target.dataset.favorite = true;
-    console.log(event.target.dataset.favorite);
     const active = event.target;
     active.innerHTML = `Remove<span class="heart-active">
                   <svg class="coctails__icon" width="18" height="18">
                     <use
-                      href="/coctails-icon.6571b9e4.svg#active-heart"
+                      href="./coctails-icon.6571b9e4.svg#active-heart"
                     ></use>
                   </svg></span>`;
     const cocktailName = event.target.previousElementSibling.dataset.name;
@@ -41,23 +38,19 @@ cocktailList.addEventListener('click', event => {
     currentFavorites.push(cocktailFromLocalStorage);
     localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
   } else if (favorite === 'true') {
-    console.log('i`m already in favorites');
     event.target.dataset.favorite = false;
     const active = event.target;
-    console.log('active', active);
 
     active.innerHTML = `Add to<span class="heart-active">
                   <svg class="coctails__icon" width="18" height="18">
                     <use
-                      href="/coctails-icon.6571b9e4.svg#disactive-heart"
+                      href="./coctails-icon.6571b9e4.svg#disactive-heart"
                     ></use>
                   </svg></span>`;
     const cocktailName = event.target.previousElementSibling.dataset.name;
-    console.log('cocktailName', cocktailName);
     const cocktailFromLocalStorage = JSON.parse(
       localStorage.favoriteCocktails
     ).filter(el => el.name !== cocktailName);
-    console.log('cocktailFromLocalStorage', cocktailFromLocalStorage);
     localStorage.setItem(
       'favoriteCocktails',
       JSON.stringify(cocktailFromLocalStorage)
@@ -243,7 +236,7 @@ async function createMarkup(array) {
             </button>
             <button type="button" class="info__btn add-to-btn" data-favorite="${favorite}">
               ${btnText}<span><svg class="coctails__icon" width="18" height="18">
-                <use href="${isFavorite}"></use>
+                <use href=".${isFavorite}"></use>
               </svg></span>
             </button>
 
