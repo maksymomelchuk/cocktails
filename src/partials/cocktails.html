@@ -1,5 +1,5 @@
 <section class="coctails">
-  <div class="container">
+  <div class="container" id="main-container">
     <div class="cocktails__wrapper">
       <h2 class="coctails__title">Cocktails</h2>
       <ul class="coctails__list">
@@ -16,16 +16,21 @@
               <button type="button" class="info__btn learn-more-btn">
                 Learn more
               </button>
-              <button type="button" class="info__btn add-to-btn is-hidden">
-                Add to<svg class="coctails__icon" width="18" height="18">
-                  <use href="./images/coctails-icon.svg#disactive-heart"></use>
-                </svg>
+              <!-- <button type="button" class="info__btn add-to-btn is-hidden">
+                Add to<span class="heart-disactive">
+                  <svg class="coctails__icon" width="18" height="18">
+                    <use
+                      href="./images/coctails-icon.svg#disactive-heart"
+                    ></use></svg
+                ></span>
               </button>
               <button type="button" class="info__btn remove-btn">
-                Remove<svg class="coctails__icon" width="18" height="18">
-                  <use href="./images/coctails-icon.svg#active-heart"></use>
-                </svg>
-              </button>
+                Remove<span class="heart-active">
+                  <svg class="coctails__icon" width="18" height="18">
+                    <use href="./images/coctails-icon.svg#active-heart"></use>
+                  </svg>
+                </span>
+              </button> -->
             </div>
           </div>
         </li>
@@ -37,7 +42,7 @@
       </ul> -->
     </div>
     <!-- Розмітка, якщо коктейль не знайдено -->
-    <div class="coctails-no-found is-hidden">
+    <div class="coctails-no-found visually-hidden">
       <p class="coctails-no-found__title">
         Sorry, we didn't find any cocktail for you
       </p>
