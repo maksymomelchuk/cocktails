@@ -38,7 +38,8 @@
   transition: opacity 2000ms $timingFunction, transform 1000ms $timingFunction;
   @media screen and (min-width: 768px) {
     width: 715px;
-    height: 557px;
+    // height: 557px;
+    max-height: 100%;
     padding: 40px 28px;
   }
 }
@@ -90,6 +91,11 @@
   font-size: 16px;
   line-height: 1.75;
   color: $textColorGray;
+}
+
+.ingridient-modal__info:first-word {
+  font-weight: 600;
+  color: $textColorBlack;
 }
 
 .ingridient-modal__name {

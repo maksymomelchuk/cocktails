@@ -1,3 +1,5 @@
+import { fetchIngridient } from './fetch';
+
 const openLearnMore = document.querySelector('.coctails__list');
 const closeLearnMore = document.querySelector('.coctails-close-btn');
 const learnMoreMenu = document.querySelector('.coctails-modal__backdrop');
@@ -8,11 +10,11 @@ const ingridientModal = document.querySelector('.ing-modal__backdrop');
 const ingridientCloseBtn = document.querySelector('.ingridient-close-btn');
 openLearnMore.addEventListener('click', onOpenLearnMore);
 closeLearnMore.addEventListener('click', onCloseLearnMore);
-
+let coctName = '';
 function onOpenLearnMore(event) {
   if (event.target.classList.contains('learn-more-btn')) {
     learnMoreMenu.classList.remove('is-close');
-    const coctName = event.target.dataset.name;
+    coctName = event.target.dataset.name;
     coctTitle = document.querySelector('.coctails-modal__title');
     coctTitle.textContent = coctName;
     body.classList.add('no-scroll');
@@ -49,8 +51,27 @@ function learnMoreEscPressed(event) {
 ingredientList.addEventListener('click', onIngridientClick);
 
 function onIngridientClick(event) {
+  const ingridientTitle = document.querySelector('.ingridient-modal__title');
+  const drinkType = document.querySelector('.ingridient-modal__sub-title');
+  const ingrDescription = document.querySelector('.ingridient-modal__info');
+  const alcoholContent = document.querySelector('.alcohol-content');
   if (event.target.classList.contains('coct__ingridient')) {
     ingridientModal.classList.remove('is-ingridient-hidden');
+    const ingrName = event.target.dataset.id;
+
+    fetchIngridient(ingrName).then(data => {
+      const ingridient = data.ingredients[0];
+      ingridientTitle.textContent = ingridient.strIngredient;
+      drinkType.textContent = ingridient.strType;
+      ingrDescription.textContent = ingridient.strDescription;
+      if (ingridient.strAlcohol === 'Yes' && ingridient.strABV !== null) {
+        alcoholContent.textContent = 'Alcohol Content: ' + ingridient.strABV;
+      } else if (ingridient.strAlcohol === 'No' && ingridient.strABV === null) {
+        alcoholContent.textContent = 'Not Alcoholic';
+      } else {
+        alcoholContent.textContent = '';
+      }
+    });
   }
 
   document.removeEventListener('keydown', learnMoreEscPressed);
@@ -66,6 +87,7 @@ ingridientCloseBtn.addEventListener('click', onIngridientCloseBtn);
 
 function onIngridientCloseBtn(event) {
   ingridientModal.classList.add('is-ingridient-hidden');
+  document.addEventListener('keydown', learnMoreEscPressed);
 }
 
 function onCloseLearnMore() {

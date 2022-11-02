@@ -253,9 +253,9 @@ async function fetchIngridient(ingridient) {
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingridient}`
   )
     .then(response => response.json())
-    .then(data => console.log(data.ingredients[0]))
+    .then(data => data)
     .catch(error => console.log(error));
 }
 fetchRandom(checkDisplayType());
 
-export { pagination, fetchByLetter };
+export { pagination, fetchByLetter, fetchIngridient };
