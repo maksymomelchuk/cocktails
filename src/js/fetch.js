@@ -216,10 +216,10 @@ async function createMarkup(array) {
       let btnText;
       if (favorite) {
         btnText = 'Remove';
-        isFavorite = '/coctails-icon.6571b9e4.svg#active-heart';
+        isFavorite = './coctails-icon.6571b9e4.svg#active-heart';
       } else {
         btnText = 'Add to';
-        isFavorite = '/coctails-icon.6571b9e4.svg#disactive-heart';
+        isFavorite = './coctails-icon.6571b9e4.svg#disactive-heart';
       }
       return `<li class="coctails__item">
         <img
@@ -236,7 +236,7 @@ async function createMarkup(array) {
             </button>
             <button type="button" class="info__btn add-to-btn" data-favorite="${favorite}">
               ${btnText}<span><svg class="coctails__icon" width="18" height="18">
-                <use href=".${isFavorite}"></use>
+                <use href="${isFavorite}"></use>
               </svg></span>
             </button>
 
