@@ -31,7 +31,7 @@ function onOpenLearnMore(event) {
     coctInstruction.textContent = selectedCocktail.instruction;
 
     const coctIngridients = [];
-    for (i = 0; i < selectedCocktail.ingredients.length; i += 1) {
+    for (let i = 0; i < selectedCocktail.ingredients.length; i += 1) {
       coctIngridients.push(
         `<li class="coctails-modal__item" data-type="coctails-modal__item"><button  data-id="${selectedCocktail.ingredients[i]}" type="button" class="coct__ingridient">${selectedCocktail.ingredients[i]}</button></li>`
       );
