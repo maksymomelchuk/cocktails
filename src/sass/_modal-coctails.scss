@@ -197,11 +197,9 @@
   }
 }
 
-.coctails-modal__item,
 .coct__ingridient {
-  margin-left: 10px;
-  list-style-type: '✶';
-
+  padding: 0;
+  margin: 0;
   font-family: $ffPoppins;
   font-weight: 400;
   font-size: 16px;
@@ -210,8 +208,23 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  @media screen and (min-width: 768px) {
-    list-style-type: '✶';
+
+  &::before {
+    margin-right: 5px;
+    content: '✶';
+    color: $texttColorBlackModal;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    content: '✶';
+    color: $accentColor;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    color: $accentColor;
   }
 }
 
