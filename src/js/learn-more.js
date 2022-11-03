@@ -39,15 +39,15 @@ function onOpenLearnMore(event) {
 
     ingredientList.innerHTML = coctIngridients.join('');
     //
-    const currentFavorites =
-      JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
-    const isInFavorite = currentFavorites.find(item => item.name === coctName);
-    const addToFavoriteCocktail = document.querySelector('.add-to-favorite');
-    if (!isInFavorite) {
-      addToFavoriteCocktail.textContent = 'Add to favorite';
-    } else {
-      addToFavoriteCocktail.textContent = 'Remove from favorite';
-    }
+    // const currentFavorites =
+    //   JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+    // const isInFavorite = currentFavorites.find(item => item.name === coctName);
+    // const addToFavoriteCocktail = document.querySelector('.add-to-favorite');
+    // if (!isInFavorite) {
+    //   addToFavoriteCocktail.textContent = 'Add to favorite';
+    // } else {
+    //   addToFavoriteCocktail.textContent = 'Remove from favorite';
+    // }
 
     // addToFavoriteCocktail.addEventListener(
     //   'click',

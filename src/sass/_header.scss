@@ -107,6 +107,7 @@ p {
 
 // MENU FAVORITE
 .header-list-menu__link {
+  cursor: pointer;
   text-decoration: none;
   font-family: $ffPoppins;
   font-weight: 400;
@@ -125,6 +126,7 @@ p {
 }
 
 .header-list-menu {
+  background-color: $bgColor;
   position: absolute;
   width: 212px;
   height: 98px;
