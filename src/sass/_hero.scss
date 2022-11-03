@@ -96,6 +96,11 @@
     line-height: 1.56;
   }
 }
+
+.hero__filter__text.dark {
+  color: #fcfcfc;
+}
+
 .select__wrap {
   text-align: center;
   margin: 0 auto;
@@ -261,7 +266,6 @@
   line-height: 1.5;
   color: #5f6775;
   text-align: center;
-  background-color: white;
   border: none;
 
   @media screen and (min-width: 1280px) {
