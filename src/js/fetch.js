@@ -46,18 +46,51 @@ const heartDisactive = `<span class="heart-disactive">
                 </span>`;
 
 cocktailList.addEventListener('click', event => {
+  const addToFavoriteCocktail = document.querySelector('.add-to-favorite');
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
-  let { name, modal, favorite } = event.target.dataset;
+  let { name, include, favorite } = event.target.dataset;
   if (name) {
     const cocktailName = name;
-
     const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
       el => el.name === cocktailName
     );
+    // !
+    // if (include === 'false') {
+    //   addToFavoriteCocktail.textContent = 'Add to favorite';
+    // }
+    // if (include === 'true') {
+    //   addToFavoriteCocktail.textContent = 'Remove from favorite';
+    // }
+    // addToFavoriteCocktail.addEventListener('click', event => {
+    //   console.log(cocktailName);
+    //   if (event.target.textContent === 'Add to favorite') {
+    //     event.target.dataset.include = true;
+    //     event.target.dataset.favorite = true;
+    //     event.target.textContent = 'Remove from favorite';
+    //     const currentFavorites =
+    //       JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+    //     currentFavorites.push(cocktailFromLocalStorage);
+    //     localStorage.setItem(
+    //       'favoriteCocktails',
+    //       JSON.stringify(currentFavorites)
+    //     );
+    //   } else {
+    //     event.target.dataset.include = false;
+    //     event.target.textContent = 'Add to favorite';
+    //     const cocktailFromLocalStorage = JSON.parse(
+    //       localStorage.favoriteCocktails
+    //     ).filter(el => el.name !== cocktailName);
+    //     localStorage.setItem(
+    //       'favoriteCocktails',
+    //       JSON.stringify(cocktailFromLocalStorage)
+    //     );
+    //   }
+    // });
   } else if (favorite === 'false') {
     event.target.dataset.favorite = true;
+    event.target.dataset.include = true;
     const active = event.target;
     active.innerHTML = `Remove${heartActive}`;
     const cocktailName = event.target.previousElementSibling.dataset.name;
@@ -70,6 +103,7 @@ cocktailList.addEventListener('click', event => {
     localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
   } else if (favorite === 'true') {
     event.target.dataset.favorite = false;
+    event.target.dataset.include = false;
     const active = event.target;
 
     active.innerHTML = `Add to${heartDisactive}`;
@@ -258,7 +292,7 @@ async function createMarkup(array) {
         <div class="coctails-info">
           <h3 class="coctails__name">${strDrink}</h3>
           <div class="coctails__btn">
-            <button type="button" class="info__btn learn-more-btn" data-name="${strDrink}" data-modal="open">
+            <button type="button" class="info__btn learn-more-btn" data-name="${strDrink}" data-include="${favorite}">
               Learn more
             </button>
             <button type="button" class="info__btn add-to-btn" data-favorite="${favorite}">

@@ -38,6 +38,22 @@ function onOpenLearnMore(event) {
     }
 
     ingredientList.innerHTML = coctIngridients.join('');
+    //
+    const currentFavorites =
+      JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+    const isInFavorite = currentFavorites.find(item => item.name === coctName);
+    const addToFavoriteCocktail = document.querySelector('.add-to-favorite');
+    if (!isInFavorite) {
+      addToFavoriteCocktail.textContent = 'Add to favorite';
+    } else {
+      addToFavoriteCocktail.textContent = 'Remove from favorite';
+    }
+
+    // addToFavoriteCocktail.addEventListener(
+    //   'click',
+    //   onCocktailCardClick(event, coctName)
+    // );
+    //
     document.addEventListener('keydown', learnMoreEscPressed);
   }
 }
@@ -96,3 +112,31 @@ function onCloseLearnMore() {
   document.removeEventListener('keydown', ingridientEscPressed);
   document.removeEventListener('keydown', learnMoreEscPressed);
 }
+
+// function onCocktailCardClick(event, cocktailName) {
+//   console.log('click on add to favorite', event.target.textContent);
+//   if (event.target.textContent === 'Add to favorite') {
+//     const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
+//       el => el.name === cocktailName
+//     );
+//     event.target.dataset.include = true;
+//     // event.target.dataset.favorite = true;
+//     // event.target.textContent = 'Remove from favorite';
+//     const currentFavorites =
+//       JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+//     currentFavorites.push(cocktailFromLocalStorage);
+//     localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
+//   } else {
+//     event.target.dataset.include = false;
+//     // event.target.dataset.favorite = false;
+//     console.log(event.target);
+//     // event.target.textContent = 'Add to favorite';
+//     const cocktailFromLocalStorage = JSON.parse(
+//       localStorage.favoriteCocktails
+//     ).filter(el => el.name !== cocktailName);
+//     localStorage.setItem(
+//       'favoriteCocktails',
+//       JSON.stringify(cocktailFromLocalStorage)
+//     );
+//   }
+// }
