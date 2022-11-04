@@ -335,4 +335,11 @@ async function fetchIngridient(ingridient) {
 }
 fetchRandom(checkDisplayType());
 
-export { pagination, fetchByLetter, fetchIngridient, createMarkup };
+export {
+  pagination,
+  fetchByLetter,
+  fetchIngridient,
+  createMarkup,
+  heartDisactive,
+  heartActive,
+};

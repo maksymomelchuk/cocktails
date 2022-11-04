@@ -1,4 +1,4 @@
-import { fetchIngridient } from './fetch';
+import { fetchIngridient, heartDisactive, heartActive } from './fetch';
 
 const openLearnMore = document.querySelector('.coctails__list');
 const closeLearnMore = document.querySelector('.coctails-close-btn');
@@ -10,17 +10,22 @@ const ingridientModal = document.querySelector('.ing-modal__backdrop');
 const ingridientCloseBtn = document.querySelector('.ingridient-close-btn');
 openLearnMore.addEventListener('click', onOpenLearnMore);
 closeLearnMore.addEventListener('click', onCloseLearnMore);
-let coctName = '';
+// let coctName = '';
+let buttonAdd = '';
+let addToCurrentBtn;
 function onOpenLearnMore(event) {
+  buttonAdd = event.target.dataset.include;
+  addToCurrentBtn = event.target.nextElementSibling;
+  console.dir(addToCurrentBtn);
   if (event.target.classList.contains('learn-more-btn')) {
     learnMoreMenu.classList.remove('is-close');
-    coctName = event.target.dataset.name;
+    const coctName = event.target.dataset.name;
     const coctTitle = document.querySelector('.coctails-modal__title');
     coctTitle.textContent = coctName;
     body.classList.add('no-scroll');
     const coctImg = document.querySelector('.coctails-modal__img');
 
-    const selectedCocktail = JSON.parse(localStorage.cocktails).find(
+    const selectedCocktail = JSON.parse(localStorage.getItem('cocktails')).find(
       el => el.name === coctName
     );
     const coctInstruction = document.querySelector(
@@ -38,23 +43,73 @@ function onOpenLearnMore(event) {
     }
 
     ingredientList.innerHTML = coctIngridients.join('');
-    //
+
     const currentFavorites =
       JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
     const isInFavorite = currentFavorites.find(item => item.name === coctName);
     const addToFavoriteCocktail = document.querySelector('.add-to-favorite');
+    addToFavoriteCocktail.dataset.name = event.target.dataset.name;
     if (!isInFavorite) {
       addToFavoriteCocktail.textContent = 'Add to favorite';
     } else {
       addToFavoriteCocktail.textContent = 'Remove from favorite';
     }
 
-    // addToFavoriteCocktail.addEventListener(
-    //   'click',
-    //   onCocktailCardClick(event, coctName)
-    // );
-    //
+    addToFavoriteCocktail.addEventListener('click', addToFavoriteCocktailClick);
+
     document.addEventListener('keydown', learnMoreEscPressed);
+  }
+}
+
+function addToFavoriteCocktailClick(event) {
+  const drinkName = event.target.dataset.name;
+
+  const curentFavorites =
+    JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+  // console.log(currentFavorites);
+  // if (currentFavorites === []) {
+  //   const cocktailparse = JSON.parse(localStorage.getItem('cocktails'));
+
+  //   console.log('Coctail-parse ', drinkName);
+  //   const cocktailFromLocalStorage = cocktailparse.find(
+  //     el => el.name === drinkName
+  //   );
+  //   console.log('cocktailFromLocalStorag ', cocktailFromLocalStorag);
+  //   currentFavorites.push(cocktailFromLocalStorage);
+  // } else
+  if (event.target.textContent === 'Add to favorite') {
+    const alcDrink = event.target.dataset.name;
+
+    const localStorageItem = JSON.parse(localStorage.getItem('cocktails'));
+    // console.log('local obj', localStorageItem);
+    const cocktailFromLocalStorage = localStorageItem.find(
+      el => el.name === alcDrink
+    );
+
+    curentFavorites.push(cocktailFromLocalStorage);
+    // console.log('local obj', curentFavorites);
+
+    localStorage.setItem('favoriteCocktails', JSON.stringify(curentFavorites));
+    // console.log(cocktailFromLocalStorage);
+    event.target.textContent = 'Remove from favorite';
+  } else if (event.target.textContent === 'Remove from favorite') {
+    const drink = drinkName;
+
+    const localStorageItem = JSON.parse(
+      localStorage.getItem('favoriteCocktails')
+    );
+
+    const cocktailFromLocalStorage = localStorageItem.filter(
+      el => el.name !== drink
+    );
+
+    localStorage.setItem(
+      'favoriteCocktails',
+      JSON.stringify(cocktailFromLocalStorage)
+    );
+
+    buttonAdd = false;
+    event.target.textContent = 'Add to favorite';
   }
 }
 
@@ -106,11 +161,39 @@ function onIngridientCloseBtn(event) {
   document.addEventListener('keydown', learnMoreEscPressed);
 }
 
-function onCloseLearnMore() {
+function onCloseLearnMore(event) {
+  const alcDrink = event.target.parentNode.parentNode.childNodes[3].textContent;
+
+  const localStorageItem = JSON.parse(localStorage.getItem('cocktails'));
+  // console.log('local obj', localStorageItem);
+  const cocktailFromLocalStorage = localStorageItem.find(
+    el => el.name === alcDrink
+  );
+
+  const favoriteItem =
+    JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+  // console.log('local obj', localStorageItem);
+  const favoriteFromLocalStorage = favoriteItem.find(
+    el => el.name === alcDrink
+  );
+
+  console.log(favoriteItem);
+  if (favoriteFromLocalStorage) {
+    addToCurrentBtn.innerHTML = `Remove${heartActive}`;
+    addToCurrentBtn.dataset.favorite = true;
+    addToCurrentBtn.dataset.include = true;
+  } else {
+    addToCurrentBtn.innerHTML = `Add to${heartDisactive}`;
+    addToCurrentBtn.dataset.favorite = false;
+    addToCurrentBtn.dataset.include = false;
+  }
   learnMoreMenu.classList.add('is-close');
   body.classList.remove('no-scroll');
   document.removeEventListener('keydown', ingridientEscPressed);
   document.removeEventListener('keydown', learnMoreEscPressed);
+  document
+    .querySelector('.add-to-favorite')
+    .removeEventListener('click', addToFavoriteCocktailClick);
 }
 
 // function onCocktailCardClick(event, cocktailName) {
