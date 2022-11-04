@@ -2,6 +2,7 @@ const refs = {
   body: document.querySelector('body'),
   label: document.querySelector('.theme-switch__label'),
 };
+const input = document.querySelector('#themeSwitch');
 
 refs.label.addEventListener('click', () => {
   refs.body.classList.toggle('change-toggle-color');
@@ -25,6 +26,7 @@ function checkTheme() {
   if (theme === null || theme === 'light') {
     return;
   } else {
+    input.checked = true;
     const body = document.querySelector('body');
     body.classList.toggle('change-toggle-color');
     span.forEach(el => el.classList.toggle('dark'));

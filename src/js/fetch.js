@@ -49,7 +49,6 @@ cocktailList.addEventListener('click', event => {
     const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
       el => el.name === cocktailName
     );
-    console.log(cocktailFromLocalStorage);
     // !
     // if (include === 'false') {
     //   addToFavoriteCocktail.textContent = 'Add to favorite';
