@@ -47,6 +47,7 @@ function onOpenLearnMore(event) {
     const currentFavorites =
       JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
     const isInFavorite = currentFavorites.find(item => item.name === coctName);
+    console.log(coctName);
     const addToFavoriteCocktail = document.querySelector('.add-to-favorite');
     addToFavoriteCocktail.dataset.name = event.target.dataset.name;
     if (!isInFavorite) {
@@ -196,30 +197,28 @@ function onCloseLearnMore(event) {
     .removeEventListener('click', addToFavoriteCocktailClick);
 }
 
-// function onCocktailCardClick(event, cocktailName) {
-//   console.log('click on add to favorite', event.target.textContent);
-//   if (event.target.textContent === 'Add to favorite') {
-//     const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
-//       el => el.name === cocktailName
-//     );
-//     event.target.dataset.include = true;
-//     // event.target.dataset.favorite = true;
-//     // event.target.textContent = 'Remove from favorite';
-//     const currentFavorites =
-//       JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
-//     currentFavorites.push(cocktailFromLocalStorage);
-//     localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
-//   } else {
-//     event.target.dataset.include = false;
-//     // event.target.dataset.favorite = false;
-//     console.log(event.target);
-//     // event.target.textContent = 'Add to favorite';
-//     const cocktailFromLocalStorage = JSON.parse(
-//       localStorage.favoriteCocktails
-//     ).filter(el => el.name !== cocktailName);
-//     localStorage.setItem(
-//       'favoriteCocktails',
-//       JSON.stringify(cocktailFromLocalStorage)
-//     );
-//   }
-// }
+function onCocktailCardClick(event, cocktailName) {
+  if (event.target.textContent === 'Add to favorite') {
+    const cocktailFromLocalStorage = JSON.parse(localStorage.cocktails).find(
+      el => el.name === cocktailName
+    );
+    event.target.dataset.include = true;
+    // event.target.dataset.favorite = true;
+    // event.target.textContent = 'Remove from favorite';
+    const currentFavorites =
+      JSON.parse(localStorage.getItem('favoriteCocktails')) || [];
+    currentFavorites.push(cocktailFromLocalStorage);
+    localStorage.setItem('favoriteCocktails', JSON.stringify(currentFavorites));
+  } else {
+    event.target.dataset.include = false;
+    // event.target.dataset.favorite = false;
+    // event.target.textContent = 'Add to favorite';
+    const cocktailFromLocalStorage = JSON.parse(
+      localStorage.favoriteCocktails
+    ).filter(el => el.name !== cocktailName);
+    localStorage.setItem(
+      'favoriteCocktails',
+      JSON.stringify(cocktailFromLocalStorage)
+    );
+  }
+}

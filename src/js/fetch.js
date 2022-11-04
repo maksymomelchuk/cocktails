@@ -1,14 +1,7 @@
-import axios from 'axios';
-import activeHeart from '../images/coctails-icon.svg#active-heart';
-import disactiveHeart from '../images/coctails-icon.svg#disactive-heart';
-
 const searchBar = document.querySelector('.search');
 const cocktailList = document.querySelector('.coctails__list');
 const cocktailsBox = document.querySelector('.cocktails__wrapper');
-const cocktailsItem = document.querySelector('.coctails__item');
 const noCocktails = document.querySelector('.coctails-no-found');
-const learnMoreBtn = document.querySelector('.learn-more-btn');
-const containerRef = document.querySelector('#main-container');
 
 const heartActive = `<span class="heart-active">
                   <svg
@@ -40,7 +33,7 @@ const heartDisactive = `<span class="heart-disactive">
                     />
                     <path
                       d="M10.5 17L9.2675 15.921C4.89 12.1035 2 9.58583 2 6.49591C2 3.9782 4.057 2 6.675 2C8.154 2 9.5735 2.66213 10.5 3.70845C11.4265 2.66213 12.846 2 14.325 2C16.943 2 19 3.9782 19 6.49591C19 9.58583 16.11 12.1035 11.7325 15.9292L10.5 17Z"
-                      fill="#FCFCFC"
+                      
                     />
                   </svg>
                 </span>`;
@@ -120,15 +113,17 @@ cocktailList.addEventListener('click', event => {
 
 searchBar.addEventListener('submit', onSubmit);
 
-function onSubmit() {
+function onSubmit(event) {
   event.preventDefault();
 
-  if (searchBar.searchQuery.value === '') {
+  if (event.target.searchQuery.value === '') {
     fetchRandom(checkDisplayType());
   } else {
-    pagination(fetchByName, searchBar.searchQuery.value);
+    pagination(fetchByName, event.target.searchQuery.value);
   }
-  searchBar.reset();
+  event.target.reset();
+  const burger = document.querySelector('.container-menu');
+  burger.classList.add('visually-hidden');
 }
 
 async function fetchByName(cocktailName) {

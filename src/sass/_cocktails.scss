@@ -15,7 +15,7 @@
   font-weight: 600;
   font-size: 22px;
   line-height: 1.9;
-  color: $textColorBlack;
+  color: inherit;
 
   @media screen and (min-width: 768px) {
     font-weight: 700;
@@ -110,7 +110,7 @@
   font-size: 26px;
   line-height: 1.6;
 
-  color: $textColorBlack;
+  color: inherit;
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
@@ -255,6 +255,7 @@
 }
 
 .coctails__icon {
+  fill: currentColor;
   margin-left: 8px;
 
   @media screen and (min-width: 768px) {
@@ -319,12 +320,12 @@
 
   &__item {
     font-family: $ffMont;
-    color: #1e1e1e;
+    color: inherit;
     font-size: 16px;
     line-height: 1.25;
 
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     border: 1px solid $accentColor;
     border-radius: 50%;
 
@@ -333,6 +334,11 @@
     align-items: center;
 
     transition: $timingFunction;
+
+    @media screen and (min-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
 
     &:hover {
       background-color: $accentColor;
@@ -345,4 +351,12 @@
 li.pagination__item--active {
   background-color: $accentColor;
   color: $textColorWhite;
+}
+
+.heart-disactive {
+  color: $bgColor;
+  background-color: inherit;
+}
+.heart-disactive.dark {
+  color: $textColorBlack;
 }
