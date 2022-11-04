@@ -52,6 +52,11 @@
     display: none;
   }
 }
+
+.theme-switch__input {
+  z-index: 3;
+}
+
 .btn-search-burger {
   border: 1px solid $accentColor;
   border-right: none;
