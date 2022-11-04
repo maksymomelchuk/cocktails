@@ -28,7 +28,6 @@ function onFavoritCocktailClick(event) {
   if (event.target.textContent === 'Favorite cocktails') {
     const fromLocalStorage =
       JSON.parse(localStorage.getItem('favoriteCocktails')) ?? [];
-    console.log(fromLocalStorage.length);
     if (Array.isArray(fromLocalStorage) && fromLocalStorage.length !== 0) {
       sectionHero.classList.add('visually-hidden');
       sectionCocktails.firstElementChild.textContent = 'Favorite cocktails';
@@ -42,6 +41,8 @@ function onFavoritCocktailClick(event) {
   } else {
     // If button is favorite ingridients
   }
+  const burger = document.querySelector('.container-menu');
+  burger.classList.add('visually-hidden');
 }
 
 function createFavoriteMarkup(array) {
@@ -89,3 +90,5 @@ function createFavoriteMarkup(array) {
     .join('');
   return markup;
 }
+
+export { onFavoritCocktailClick };

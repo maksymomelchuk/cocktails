@@ -114,15 +114,17 @@ cocktailList.addEventListener('click', event => {
 
 searchBar.addEventListener('submit', onSubmit);
 
-function onSubmit() {
+function onSubmit(event) {
   event.preventDefault();
 
-  if (searchBar.searchQuery.value === '') {
+  if (event.target.searchQuery.value === '') {
     fetchRandom(checkDisplayType());
   } else {
-    pagination(fetchByName, searchBar.searchQuery.value);
+    pagination(fetchByName, event.target.searchQuery.value);
   }
-  searchBar.reset();
+  event.target.reset();
+  const burger = document.querySelector('.container-menu');
+  burger.classList.add('visually-hidden');
 }
 
 async function fetchByName(cocktailName) {
@@ -329,4 +331,4 @@ async function fetchIngridient(ingridient) {
 }
 fetchRandom(checkDisplayType());
 
-export { pagination, fetchByLetter, fetchIngridient };
+export { pagination, fetchByLetter, fetchIngridient, onSubmit };

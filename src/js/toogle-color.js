@@ -33,4 +33,4 @@ function checkTheme() {
   }
 }
 
-setTimeout(checkTheme, 300);
+checkTheme();

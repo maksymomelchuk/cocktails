@@ -65,7 +65,6 @@ function fillterClick(event) {
     if (currentEl) {
       currentEl.classList.remove('fillter_button--current');
     }
-    console.log(event.target.dataset.id);
     try {
       pagination(fetchByLetter, symbol);
     } catch (error) {

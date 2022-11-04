@@ -15,12 +15,17 @@ p {
 }
 
 .menu-open {
-  background-color: $textColorWhite;
+  color: inherit;
+  background-color: inherit;
   border: none;
   display: block;
   @media screen and (min-width: 1280px) {
     display: none;
   }
+}
+
+.menu-icon {
+  fill: currentColor;
 }
 
 .header-list {
