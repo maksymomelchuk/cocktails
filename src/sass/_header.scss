@@ -15,7 +15,7 @@ p {
 }
 
 .menu-open {
-  background-color: $textColorWhite;
+  background-color: inherit;
   border: none;
   display: block;
   @media screen and (min-width: 1280px) {
@@ -148,6 +148,8 @@ p {
 
 .change-toggle-color {
   background-color: #202025;
+  color: #fcfcfc;
+  fill: #fcfcfc;
 }
 
 // Toggle switch
