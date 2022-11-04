@@ -4,10 +4,11 @@ const refs = {
 };
 const input = document.querySelector('#themeSwitch');
 
-refs.label.addEventListener('click', () => {
+refs.label.addEventListener('click', themeSwitcher);
+
+function themeSwitcher() {
   refs.body.classList.toggle('change-toggle-color');
   const span = document.querySelectorAll('.heart-disactive');
-  console.log('span', span);
   span.forEach(el => el.classList.toggle('dark'));
   const p = document.querySelector('.hero__filter__text');
   p.classList.toggle('dark');
@@ -18,7 +19,7 @@ refs.label.addEventListener('click', () => {
   } else {
     localStorage.setItem('theme', 'light');
   }
-});
+}
 
 function checkTheme() {
   const theme = localStorage.getItem('theme');
@@ -36,3 +37,5 @@ function checkTheme() {
 }
 
 checkTheme();
+
+export { themeSwitcher };
