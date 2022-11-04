@@ -134,3 +134,123 @@
   border-radius: 4px;
   display: block;
 }
+
+// TOGGLE =============================
+
+.toggle-burger {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 115px;
+    padding-left: 0;
+  }
+}
+
+.burger-switch__input,
+.burger-switch__label {
+  position: absolute;
+  z-index: 1;
+}
+
+.burger-switch__input {
+  opacity: 0;
+  width: 40px;
+  left: 70px;
+  z-index: 2;
+  @media screen and (min-width: 768px) {
+    left: 38%;
+    width: 40px;
+  }
+}
+
+.burger-switch__label {
+  margin-right: 70px;
+  outline: 1px solid #fd5103;
+  position: relative;
+  width: 40px;
+  height: 16px;
+  border-radius: 50px;
+  text-align: center;
+  background-color: transparent;
+  @media screen and (min-width: 768px) {
+    height: 20px;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    transform: translate3d(0, -50%, 0);
+    top: 50%;
+    font-family: $ffPoppins;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  &::before {
+    content: 'Light';
+    right: 100%;
+    margin-right: 8px;
+    color: #fd5103;
+    @media screen and (min-width: 768px) {
+      margin-right: 12px;
+    }
+  }
+
+  &::after {
+    content: 'Dark';
+    left: 100%;
+    margin-left: 8px;
+    color: #5f6775;
+    @media screen and (min-width: 768px) {
+      margin-left: 12px;
+    }
+  }
+
+  .burger-switch {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+  }
+
+  .burger-switch::after {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    content: '';
+    border-radius: 50%;
+    background-color: #fd5103;
+    transition: transform 200ms, background-color 200ms;
+    box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.4);
+    @media screen and (min-width: 768px) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.burger-switch__input:checked ~ .burger-switch__label {
+  background: #fd5103;
+  outline: 1px solid #fcfcfc;
+
+  &::before {
+    color: #fcfcfc;
+  }
+
+  &::after {
+    color: #fd5103;
+  }
+
+  .burger-switch::after {
+    transform: translate3d(23px, 0, 0);
+    background: #fcfcfc;
+    @media screen and (min-width: 768px) {
+      transform: translate3d(20px, 0, 0);
+    }
+  }
+}
